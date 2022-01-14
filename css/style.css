@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat" , "sans-serif" ;
+}
+body{
+    height: 100vh;
+    background: linear-gradient(69.66deg, #00C1FE 19.39%, #FAFFC1 96.69%);
+}
+.container{
+    height: 100vh;
+}
+.login-form{
+    height: 550px;
+    width: 475px;
+    border-radius: 20px;
+}
+.login-logo h1{
+    font-size: 32px;
+    font-weight: 700;
+
+}
+.login-title h2{
+    font-weight: 600;
+    font-size: 22px;
+}
+.login-title p{
+    font-size: 14px;
+}
+form label{
+    font-size: 14px;
+    font-weight: 500;
+}
+::placeholder{
+    font-size: 12px;
+}
+.btn{
+    font-weight: 500;
+}
