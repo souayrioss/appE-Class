@@ -28,8 +28,8 @@
 a{
     font-size: 14px;
 }
-.nav-item:active,
-.nav-item:focus,
+.nav-item:active ,
+.nav-item:focus ,
 .nav-item:hover{
     background-color:#00C1FE;
     ;
@@ -55,3 +55,40 @@ a{
     transform: rotate(180deg);
     
 }
+.boxes{
+    width: 100vw;
+    height: 27vh;
+    right: 0;
+    transition: all 1s;
+}
+.boxes img{
+    height: 50px;
+}
+.boxes h6{
+    font-size: 14px;
+    font-weight: 500;
+}
+.boxes p{
+    top: 75%;
+}
+.box-student{
+    background-color: #F0F9FF;
+
+}
+.box-course{
+
+    background-color: #FEF6FB;
+
+}
+.box-payment{
+
+    background-color: #FEFBEC;
+
+}
+.box-user{
+    background: linear-gradient(110.42deg, #00C1FE 18.27%, #FAFFC1 91.84%);;
+}
+.active-boxes{
+    width: 82vw;
+    right: 0;
+} 
