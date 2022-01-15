@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat" , "sans-serif" ;
+}
+.navbar{
+    width: 18vw; 
+    height: 100vh;
+    position: fixed;
+    margin-left: -18vw;
+    top: 0;
+    background-color:#FAFFC1;
+    transition: 1s
+    ;
+}
+.logo h1{
+    font-size: 20px;
+    font-weight: 700;
+}
+.profil h2{
+    font-size: 17px;
+    font-weight: 700;
+}
+.profil p{
+    font-size:14px ;
+    font-weight: 500;
+}
+a{
+    font-size: 14px;
+}
+.nav-item:active,
+.nav-item:focus,
+.nav-item:hover{
+    background-color:#00C1FE;
+    ;
+}
+.form-inputs {
+    position: relative
+}
+.form-inputs i {
+    position: absolute;
+    right: 10px;
+    top: 8px
+}
+.menu-btn{
+    transition: 1s;
+}
+.active-nav{
+    margin-left: 0;
+    top: 0;
+
+}
+.active-cont{
+    margin-left: 18vw;
+    transform: rotate(180deg);
+    
+}
