@@ -100,9 +100,6 @@ th,td{
     border-collapse: separate;  
     border-spacing: 0 15px;
 }
-table{
-    overflow: auto;
-}
 @media screen and (max-width:800px) {
     .logo h1{
         font-size:  16px;
@@ -136,10 +133,8 @@ table{
     .profil p{
         font-size: 6px;
     }
-    .nav-link{
-        font-size: 6px;
-    }
-    /* .nav-link:not(.i){
+    .nav-link span{
         display: none;
-    } */
+    }
+    
 }
