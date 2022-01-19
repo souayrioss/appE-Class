@@ -32,7 +32,7 @@ a{
 .nav-item:active ,
 .nav-item:focus ,
 .nav-item:hover{
-    background-color:#00C1FE;
+    background-color: #0DCAF0;
     ;
 }
 .form-inputs {
@@ -54,7 +54,6 @@ a{
 .active-cont{
     margin-left: 18vw;
     transform: rotate(180deg);
-    
 }
 .boxes{
     width: 100vw;
@@ -72,27 +71,17 @@ a{
 .boxes p{
     top: 75%;
 }
-.box-student{
-    background-color: #F0F9FF;
-
-}
-.box-course{
-
-    background-color: #FEF6FB;
-
-}
-.box-payment{
-
-    background-color: #FEFBEC;
-
-}
-.box-user{
-    background: linear-gradient(110.42deg, #00C1FE 18.27%, #FAFFC1 91.84%);;
+.box{
+    width: 22vw;
+    transition: all 1s;
 }
 .active-boxes{
     width: 80vw;
     right: 0;
 } 
+.active-box{
+    width: 18vw;
+}
 th,td{
     border: none;
 }

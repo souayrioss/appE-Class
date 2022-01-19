@@ -17,7 +17,7 @@
             <h1 class="mb-0">E-classe</h1>
         </div>
         <div class="profil text-center mb-lg-4 mx-auto">
-            <img class=" rounded-circle mb-3"src="img/youcode.png" alt="admin">
+            <img class=" rounded-circle mb-3" src="img/youcode.png" alt="admin">
             <h2>Admin name</h2>
             <p class="rol text-info">Admin</p>
         </div>
@@ -25,13 +25,13 @@
             <li class="nav-item bg-info rounded-3 px-lg-5 mb-2"><a href="dashboard.html" class="nav-link text-black"> <i class="bi bi-house-door p-2"></i><span>Home</span></a></li>
             <li class="nav-item rounded-3 px-lg-5 mb-2"><a href="#" class="nav-link text-black"><i class="bi bi-bookmark p-2"></i><span>Course</span></a></li>
             <li class="nav-item rounded-3 px-lg-5 mb-2"><a href="student.html" class="nav-link text-black"><i class="bi bi-book p-2"></i><span>Student</span></a></li>
-            <li class="nav-item rounded-3 px-lg-5 mb-2"><a href="payment.html" class="nav-link text-black"><i class="bi bi-coin p-2"></i></i><span>Paiment</span></a></li>
+            <li class="nav-item rounded-3 px-lg-5 mb-2"><a href="payment.html" class="nav-link text-black"><i class="bi bi-coin p-2"></i><span>Paiment</span></a></li>
             <li class="nav-item rounded-3 px-lg-5 mb-2"><a href="#" class="nav-link text-black"><i class="bi bi-clipboard-data p-2"></i><span>Report</span></a></li>
             <li class="nav-item rounded-3 px-lg-5 mb-5"><a href="#" class="nav-link text-black"><i class="bi bi-sliders p-2"></i><span>Setting</span></a></li>
             <li class="nav-item rounded-3 text-center mt-md-3 "><a href="index.html" class="nav-link text-black"><span>Log out</span><i class="bi bi-box-arrow-right p-2"></i></a></li>
         </ul>
     </nav>
-    <section class="my-container bg-white d-flex flex-row align-items-center justify-content-between p-3">
+    <div class="my-container bg-white d-flex flex-row align-items-center justify-content-between p-3">
             <div>
                 <button class="menu-btn bg-white shadow-none border-0" id="menu-btn" type="button"><img src="img/Vector.svg" alt="navbar" style="transform: rotate(180deg);"></button>
             </div>
@@ -39,10 +39,10 @@
                 <div class="d-flex form-inputs"> <input class="form-control" type="text" placeholder="Search any product..."> <i class="bi bi-search"></i> </div>
                 <i class="bi bi-bell p-2 mx-3"></i>
             </form>
-        </section>
+        </div>
     
-    <main class="boxes d-flex position-absolute mt-5">
-        <div class="box-student d-flex  justify-content-between  rounded-3 p-4 mx-3 w-25 h-100" >
+    <main class="boxes  d-flex flex-wrap position-absolute mt-5">
+        <div class="box bg-std d-flex  justify-content-between  rounded-3 p-4 m-3  h-100" >
             <div>
                 <img class="my-3 w-75 p-0" src="img/student.svg" alt="student">
                 <h2 >Students</h2>
@@ -51,7 +51,7 @@
                 <p class="fs-3 fw-bold position-relative">243</p>
             </div>
         </div>
-        <div class="box-course d-flex justify-content-between  rounded-3 p-4 mx-3 w-25 h-100">
+        <div class="box bg-crs d-flex justify-content-between  rounded-3 p-4 m-3  h-100">
             <div>
                 <img class="my-3 w-75 p-0" src="img/course.svg" alt="Course">
                 <h2 >Course</h2>
@@ -60,7 +60,7 @@
                 <p class="fs-3 fw-bold position-relative">13</p>
             </div>
         </div>
-        <div class="box-payment d-flex justify-content-between  rounded-3 p-4 mx-3 w-25 h-100">
+        <div class="box bg-pay  d-flex justify-content-between  rounded-3 p-4 m-3 h-100 ">
             <div>
                 <img class="my-3 w-75 p-0" src="img/payment.svg" alt="payment">
                 <h2 >Payments</h2>
@@ -69,7 +69,7 @@
                 <p class="fs-3 fw-bold position-relative"><span class="fs-5">DHS</span> 556,000</p>
             </div>
         </div>
-        <div class="box-user d-flex justify-content-between  rounded-3 p-4 mx-3 w-25 h-100">
+        <div class="box bg-use d-flex justify-content-between  rounded-3 p-4 m-3 h-100">
             <div>
                 <img class="my-3 w-75 p-0" src="img/user.svg" alt="user">
                 <h2>Users</h2>
@@ -87,10 +87,14 @@
         var sidebar = document.querySelector("#sideBar")
         var btn = document.querySelector(".menu-btn")
         var boxes = document.querySelector(".boxes")
+        var box = document.querySelectorAll(".box")
         menu_btn.addEventListener("click",()=>{
             sidebar.classList.toggle("active-nav")
             btn.classList.toggle("active-cont")
             boxes.classList.toggle("active-boxes")
+            box.forEach(boxs=>{
+                boxs.classList.toggle("active-box")
+            })
         })
     </script>
 </body>
