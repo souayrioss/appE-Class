@@ -41,7 +41,24 @@
                                     <th > </th>
                                 </tr>
                             </thead>
+                            <tbody class=" border-0 ">
+                            <?php
+                                foreach($student as $row){
+                                    echo '<tr class="bg-white align-middle" >
+                                    <td class="text-center "><img  src="img/username.png" alt="username"></td>';
+                                    foreach($row as $col){
+                                        echo '
+                                            <td >'  . $col. '</td>
+                                    ';
+                                    }
 
+                                    echo '
+                                        <td ><i class="bi bi-pencil text-info"></i></td>
+                                        <td ><i class="bi bi-trash text-info"></i></td>
+                                    </tr>';
+                                }
+                                ?>
+                                </tbody>
                             </table>
                         
                     </div>
