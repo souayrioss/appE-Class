@@ -19,9 +19,9 @@
                 <h2 class="text-uppercase">Sing in</h2>
                 <p class="text-black-50">Enter your credentials to access your account</p>
             </div>
-            <form class="row g-3" action="dashboard.html">
+            <form class="row g-3" action="dashboard.php">
                 <div >
-                    <label for="email" class="form-label text-muted">Email</label>
+                    <label for="email" class="form-label text-muted">E-mail</label>
                     <input type="text" class="form-control shadow-none p-2 " id="email" placeholder="Enter your email">
                 </div>
                 <div class="mb-4">
