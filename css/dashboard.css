@@ -29,12 +29,6 @@
 a{
     font-size: 14px;
 }
-.nav-item:active ,
-.nav-item:focus ,
-.nav-item:hover{
-    background-color: #0DCAF0;
-    ;
-}
 .form-inputs {
     position: relative
 }

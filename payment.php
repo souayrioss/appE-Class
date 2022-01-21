@@ -11,34 +11,11 @@
     <title>Payments</title>
 </head>
 <body style="background-color: #f8f8f8;">
-    <nav class="navbar navbar-expand d-flex flex-column align-items-start" id="sideBar">
-        <div class="logo align-text-center border-start border-info border-5 mx-lg-4 mx-md-2 px-2 mt-3 mb-4">
-            <h1 class="mb-0">E-classe</h1>
-        </div>
-        <div class="profil text-center mb-lg-4 mx-auto">
-            <img class=" rounded-circle mb-3" src="img/youcode.png" alt="admin">
-            <h2>Admin name</h2>
-            <p class="rol text-info">Admin</p>
-        </div>
-        <ul class="navbar-nav d-flex flex-column mx-auto">
-            <li class="nav-item rounded-3 px-lg-5 mb-2"><a href="dashboard.html" class="nav-link text-black"> <i class="bi bi-house-door p-2"></i>Home</a></li>
-            <li class="nav-item rounded-3 px-lg-5 mb-2"><a href="#" class="nav-link text-black"><i class="bi bi-bookmark p-2"></i>Course</a></li>
-            <li class="nav-item rounded-3 px-lg-5 mb-2"><a href="student.html" class="nav-link text-black"><i class="bi bi-book p-2"></i>Student</a></li>
-            <li class="nav-item bg-info rounded-3 px-lg-5 mb-2"><a href="payment.html" class="nav-link text-black"><i class="bi bi-coin p-2"></i>Paiment</a></li>
-            <li class="nav-item rounded-3 px-lg-5 mb-2"><a href="#" class="nav-link text-black"><i class="bi bi-clipboard-data p-2"></i>Report</a></li>
-            <li class="nav-item rounded-3 px-lg-5 mb-5"><a href="#" class="nav-link text-black"><i class="bi bi-sliders p-2"></i>Setting</a></li>
-            <li class="nav-item rounded-3 text-center mt-md-3 "><a href="index.html" class="nav-link text-black">Log out<i class="bi bi-box-arrow-right p-2"></i></a></li>
-        </ul>
-    </nav>
-    <div class="my-container bg-white d-flex flex-row align-items-center justify-content-between p-3">
-        <div>
-            <button class="menu-btn bg-white shadow-none border-0" id="menu-btn" type="button"><img src="img/Vector.svg" alt="navbar" style="transform: rotate(180deg);"></button>
-        </div>
-        <form class="d-flex">
-            <div class="d-flex form-inputs"> <input class="form-control" type="text" placeholder="Search any product..."> <i class="bi bi-search"></i> </div>
-            <i class="bi bi-bell p-2 mx-3"></i>
-        </form>
-    </div>
+<?php
+        require_once 'include.php';
+        sidbar();
+        navbar();
+    ?>
             <main class="container-fluid boxes position-absolute p-3" >
                 <header class=" d-flex flex-row justify-content-between m-3 border-bottom border-2 ">
                         <div> 
