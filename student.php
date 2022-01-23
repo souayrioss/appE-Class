@@ -26,26 +26,40 @@
                         <button type="button" class="btn btn-info text-white  p-2 rounded-3">ADD NEW STUDENT</button>
                     </div>
                 </header>
-                    <div class="table-responsive">
+                <div class="table-responsive">
+                <table class="table" id="tab">
+                    <thead class=" text-start text-black-50 align-middle">
+                        <tr>
+                            <th > </th>
+                            <th >Name</th>
+                            <th >Email</th>
+                            <th >Phone</th>
+                            <th >Enroll Number</th>
+                            <th >Date of admission</th>
+                            <th > </th>
+                            <th > </th>
+                        </tr>
+                    </thead>
+                    <tbody class=" border-0 ">
+                    <?php
+                        foreach($student as $row){
+                            echo '<tr class="bg-white align-middle" >
+                            <td class="text-center "><img  src="img/username.png" alt="username"></td>';
+                            foreach($row as $col){
+                                echo '
+                                    <td >'  . $col. '</td>
+                            ';
+                            }
 
-                        <table class="table" id="tab">
-                            <thead class=" text-start text-black-50 align-middle">
-                                <tr>
-                                    <th > </th>
-                                    <th >Name</th>
-                                    <th >Email</th>
-                                    <th >Phone</th>
-                                    <th >Enroll Number</th>
-                                    <th >Date of admission</th>
-                                    <th > </th>
-                                    <th > </th>
-                                </tr>
-                            </thead>
-
-                            </table>
-                        
-                    </div>
-            
+                            echo '
+                                <td ><i class="bi bi-pencil text-info"></i></td>
+                                <td ><i class="bi bi-trash text-info"></i></td>
+                            </tr>';
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
             </main>
             
             <script src="js/bootstrap.js" ></script>

@@ -39,33 +39,20 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white border-0">
-                            <tr>
-                                <td class="py-3">Karthi</td>
-                                <td class="py-3">First</td>
-                                <td class="py-3">00012223</td>
-                                <td class="py-3">DHS 100</td>
-                                <td class="py-3">DHS 500</td>
-                                <td class="py-3">2022</td>
-                                <td class="py-3"><i class="bi bi-eye text-info"></i></td>
-                            </tr>
-                            <tr>
-                                <td class="py-3">Karthi</td>
-                                <td class="py-3">First</td>
-                                <td class="py-3">00012223</td>
-                                <td class="py-3">DHS 100</td>
-                                <td class="py-3">DHS 500</td>
-                                <td class="py-3">2022</td>
-                                <td class="py-3"><i class="bi bi-eye text-info"></i></td>
-                            </tr>
-                            <tr>
-                                <td class="py-3">Karthi</td>
-                                <td class="py-3">First</td>
-                                <td class="py-3">00012223</td>
-                                <td class="py-3">DHS 100</td>
-                                <td class="py-3">DHS 500</td>
-                                <td class="py-3">2022</td>
-                                <td class="py-3"><i class="bi bi-eye text-info"></i></td>
-                            </tr>
+                        <?php
+                                foreach($payment as $row){
+                                    echo '<tr class="bg-white align-middle" >';
+                                    foreach($row as $col){
+                                        echo '
+                                            <td >'  . $col. '</td>
+                                    ';
+                                    }
+
+                                    echo '
+                                    <td class="py-3"><i class="bi bi-eye text-info"></i></td>
+                                    </tr>';
+                                }
+                                ?>
                         </tbody>
                     </table>
                 </div>
