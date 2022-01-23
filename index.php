@@ -34,7 +34,7 @@
                 <p class="text-center text-muted">Forgot your password? <a class="text-info cursor-pointer">Reset Password</a></p>
             </form>
             <?php
-                require_once 'include.php';
+                require_once 'include.php' ;
                     check();
                 ?>
         </div>
