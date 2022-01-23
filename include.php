@@ -7,7 +7,7 @@
                 </div>
                 <div class="profil text-center mb-lg-4 mx-auto">
                     <img class=" rounded-circle mb-3" src="img/youcode.png" alt="admin">
-                    <h2>Admin name</h2>
+                    <h2>'.$_SESSION['email'].'</h2>
                     <p class="rol text-info">Admin</p>
                 </div>
                 <ul class="navbar-nav d-flex flex-column mx-auto">
@@ -58,8 +58,10 @@
                 $foundEm = in_array($_POST['email'], $row);
                 $foundPs = in_array($_POST['password'], $row);
                 if($foundEm && $foundPs){
+                    session_start();
+                    $_SESSION['email'] =$_POST['email'];
                     header('Location: http://localhost/appE-Class/dashboard.php'); 
-                }
+                                }
             }
     }
 
