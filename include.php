@@ -1,6 +1,6 @@
 <?php
     function sidbar(){
-        echo '
+        echo'
             <nav class="navbar navbar-expand d-flex flex-column align-items-start" id="sideBar">
                 <div class="logo align-text-center border-start border-info border-5 mx-lg-4 mx-md-2 px-2 mt-3 mb-4">
                     <h1 class="mb-0">E-classe</h1>
@@ -19,8 +19,7 @@
                     <li class="nav-item rounded-3 px-lg-5 mb-5"><a class="nav-link text-black" href="#" ><i class="bi bi-sliders p-2"></i><span>Setting</span></a></li>
                     <li class="nav-item rounded-3 text-center mt-md-3 "><a class="nav-link text-black" href="index.php" ><span>Log out</span><i class="bi bi-box-arrow-right p-2"></i></a></li>
                 </ul>
-            </nav>
-        ';
+            </nav>';
     }
     function navbar(){
         echo '
@@ -38,7 +37,19 @@
         $student = array (
             ['name' => 'oussama', 'email' => 'souayrioss@gmail.com', 'phone' => '0612345678', 'enrollNumber' => '1234567890', 'dateOfAdmission' => '99-erth, 0000'],
             ['name' => 'Qossay', 'email' => 'qossayria@gmail.com', 'phone' => '068765432', 'enrollNumber' => '0987654321', 'dateOfAdmission' => '00-pliton, 9999'],
-            ['name' => 'zoubair', 'email' => 'zoubairsou@gmail.com', 'phone' => '0656748930', 'enrollNumber' => '012938474', 'dateOfAdmission' => '66-ZOO, 2001']        
+            ['name' => 'zoubair', 'email' => 'zoubairsou@gmail.com', 'phone' => '0656748930', 'enrollNumber' => '012938474', 'dateOfAdmission' => '66-ZOO, 2001'],
+            ['name' => 'oussama', 'email' => 'souayrioss@gmail.com', 'phone' => '0612345678', 'enrollNumber' => '1234567890', 'dateOfAdmission' => '99-erth, 0000'],
+            ['name' => 'Qossay', 'email' => 'qossayria@gmail.com', 'phone' => '068765432', 'enrollNumber' => '0987654321', 'dateOfAdmission' => '00-pliton, 9999'],
+            ['name' => 'zoubair', 'email' => 'zoubairsou@gmail.com', 'phone' => '0656748930', 'enrollNumber' => '012938474', 'dateOfAdmission' => '66-ZOO, 2001'],
+            ['name' => 'oussama', 'email' => 'souayrioss@gmail.com', 'phone' => '0612345678', 'enrollNumber' => '1234567890', 'dateOfAdmission' => '99-erth, 0000'],
+            ['name' => 'Qossay', 'email' => 'qossayria@gmail.com', 'phone' => '068765432', 'enrollNumber' => '0987654321', 'dateOfAdmission' => '00-pliton, 9999'],
+            ['name' => 'zoubair', 'email' => 'zoubairsou@gmail.com', 'phone' => '0656748930', 'enrollNumber' => '012938474', 'dateOfAdmission' => '66-ZOO, 2001'],
+            ['name' => 'oussama', 'email' => 'souayrioss@gmail.com', 'phone' => '0612345678', 'enrollNumber' => '1234567890', 'dateOfAdmission' => '99-erth, 0000'],
+            ['name' => 'Qossay', 'email' => 'qossayria@gmail.com', 'phone' => '068765432', 'enrollNumber' => '0987654321', 'dateOfAdmission' => '00-pliton, 9999'],
+            ['name' => 'zoubair', 'email' => 'zoubairsou@gmail.com', 'phone' => '0656748930', 'enrollNumber' => '012938474', 'dateOfAdmission' => '66-ZOO, 2001'],
+            ['name' => 'oussama', 'email' => 'souayrioss@gmail.com', 'phone' => '0612345678', 'enrollNumber' => '1234567890', 'dateOfAdmission' => '99-erth, 0000'],
+            ['name' => 'Qossay', 'email' => 'qossayria@gmail.com', 'phone' => '068765432', 'enrollNumber' => '0987654321', 'dateOfAdmission' => '00-pliton, 9999'],
+            ['name' => 'zoubair', 'email' => 'zoubairsou@gmail.com', 'phone' => '0656748930', 'enrollNumber' => '012938474', 'dateOfAdmission' => '66-ZOO, 2001']       
         );
         $payment  = array (
             ['name' => 'oussama', 'paymentSchedule' => 'First', 'billNumber' => '00011225', 'amountPaid' => '300', 'nalanceAmount' => '500', 'date' => '00/00/0000'],
@@ -46,6 +57,17 @@
             ['name' => 'zoubair', 'paymentSchedule' => 'First', 'billNumber' => '00099771', 'amountPaid' => '200', 'nalanceAmount' => '0000', 'date' => '02/02/0000'],
             ['name' => 'Oways', 'paymentSchedule' => 'First', 'billNumber' => '00088571', 'amountPaid' => '2100', 'nalanceAmount' => '0001', 'date' => '07/09/9999'],
         );
-
-
+        function check(){
+            $admin = array (
+                ['email' => 'H-Jabane@gmail.com', 'password' => 'azert'],
+                ['email' => 'Mr-Mourad@gmail.com', 'password' => 'azertii']
+            );
+            foreach($admin as $row){
+                    $foundEm = in_array($_POST['email'], $row);
+                    $foundPs = in_array($_POST['password'], $row);
+                    if($foundEm && $foundPs){
+                        header('Location: http://localhost/appE-Class/dashboard.php'); 
+                    }
+                }
+        }
 ?>

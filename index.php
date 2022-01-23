@@ -19,20 +19,24 @@
                 <h2 class="text-uppercase">Sing in</h2>
                 <p class="text-black-50">Enter your credentials to access your account</p>
             </div>
-            <form class="row g-3" action="dashboard.php">
+            <form class="row g-3" method="POST" action="">
                 <div >
                     <label for="email" class="form-label text-muted">E-mail</label>
-                    <input type="text" class="form-control shadow-none p-2 " id="email" placeholder="Enter your email">
+                    <input type="text" class="form-control shadow-none p-2 " name="email" placeholder="Enter your email">
                 </div>
                 <div class="mb-4">
                     <label for="password" class="form-label text-muted">Password</label>
-                    <input type="text" class="form-control shadow-none p-2" id="password" placeholder="Enter your password">
+                    <input type="text" class="form-control shadow-none p-2" name="password" placeholder="Enter your password">
                 </div>
                 <div >
-                    <button type="submit" class="btn btn-info w-100 p-2 mb-3 text-uppercase text-white">Sign in</button>
+                    <input class="btn btn-info w-100 p-2 mb-3 text-uppercase text-white" type="submit" value="Sign in">
                 </div>
                 <p class="text-center text-muted">Forgot your password? <a class="text-info cursor-pointer">Reset Password</a></p>
             </form>
+            <?php
+                require_once 'include.php';
+                    check();
+                ?>
         </div>
     </main>
     <script src="js/bootstrap.js" ></script>
