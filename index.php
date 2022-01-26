@@ -19,7 +19,11 @@
                     <h2 class="text-uppercase">Sing in</h2>
                     <p class="text-muted">Enter your credentials to access your account</p>
                 </div>
-
+                <?php 
+                    if (isset($_GET['error'])){
+                        echo '<p class="err"> Email Or Password Incorrect </p>';
+                    }
+                ?>
                 <form class="row g-3" method="POST" >
                     <div >
                         <label class="form-label text-muted">E-mail</label>

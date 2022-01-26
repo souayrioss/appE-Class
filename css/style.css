@@ -36,3 +36,13 @@ form label{
 .btn{
     font-weight: 500;
 }
+.err {
+    background-color: red;
+    opacity: .6;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 5px;
+
+}

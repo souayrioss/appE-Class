@@ -63,6 +63,7 @@
                         session_start();
                         $_SESSION['email'] =$_POST['email'];
                         header('Location: dashboard.php'); 
+                        break;
                     }else {
                         header('Location: index.php?error');
                     }
