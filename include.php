@@ -72,7 +72,4 @@
             header('Location: student.php?$_GET');
         }
     }
-
-
-    
 ?>
