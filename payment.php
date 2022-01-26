@@ -28,7 +28,7 @@
                 </header>
                 <div class="table-responsive">
                     <table class=" table table-striped table-hover">
-                        <thead class=" text-start text-black-50">
+                        <thead class=" text-start ">
                             <tr>
                                 <th >Name</th>
                                 <th >Payment Schedule</th>
@@ -36,22 +36,21 @@
                                 <th >Amount Paid</th>
                                 <th >Balance amount</th>
                                 <th >Date</th>
-                                <th > </th>
+                                <td > </td>
                             </tr>
                         </thead>
                         <tbody class="bg-white border-0">
                         <?php
                                 foreach($payment as $row){
-                                    echo '<tr class="bg-white align-middle" >';
+                                    echo '<tr class="bg-white align-middle" > ';
                                     foreach($row as $col){
                                         echo '
                                             <td >'  . $col. '</td>
                                     ';
                                     }
-
                                     echo '
                                     <td class="py-3"><i class="bi bi-eye text-info"></i></td>
-                                    </tr>';
+                                    </tr> ';
                                 }
                                 ?>
                         </tbody>

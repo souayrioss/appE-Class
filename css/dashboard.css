@@ -58,24 +58,10 @@ a{
 .boxes img{
     height: 50px;
 }
-.boxes h2{
-    font-size: 14px;
-    font-weight: 500;
-}
-.boxes p{
-    top: 75%;
-}
-.box{
-    width: 22vw;
-    transition: all 1s;
-}
 .active-boxes{
-    width: 80vw;
+    width: 81vw;
     right: 0;
 } 
-.active-box{
-    width: 18vw;
-}
 th,td{
     border: none;
 }

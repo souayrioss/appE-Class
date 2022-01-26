@@ -3119,12 +3119,12 @@ textarea.form-control-lg {
 
 .btn-info {
   color: #000;
-  background-color: #0dcaf0;
-  border-color: #0dcaf0;
+  background-color: #00C1FE;
+  border-color: #00C1FE;
 }
 .btn-info:hover {
   color: #000;
-  background-color: #31d2f2;
+  background-color: #00C1FE;
   border-color: #25cff2;
 }
 .btn-check:focus + .btn-info, .btn-info:focus {
@@ -7729,7 +7729,7 @@ textarea.form-control-lg {
 
 .text-info {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-info-rgb), var(--bs-text-opacity)) !important;
+  color: #00C1FE !important;
 }
 
 .text-warning {

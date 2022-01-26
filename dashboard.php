@@ -20,41 +20,43 @@
     ?>
     
     
-    <main class="boxes  d-flex flex-wrap position-absolute mt-5">
-        <div class="box bg-std d-flex  justify-content-between  rounded-3 p-4 m-3  h-100" >
-            <div>
-                <img class="my-3 w-75 p-0" src="img/student.svg" alt="student">
-                <h2 >Students </h2>
+    <main class="boxes position-absolute">
+        <div class="row gap-3 my-4 mx-2">
+            <div class="col  bg-std rounded-3 p-4" style="min-width: 200px;">
+                <div>
+                    <img class="mb-3 p-0" src="img/student.svg" alt="student">
+                    <h2 class="fs-6 fw-normal">Students </h2>
+                </div>
+                <div >
+                    <p class="fs-3 mb-0 mt-5 fw-bold text-end" >243</p>
+                </div>
             </div>
-            <div >
-                <p class="fs-3 fw-bold position-relative">243</p>
+            <div class="col bg-crs rounded-3 p-4 " style="min-width: 200px;">
+                <div>
+                    <img class="mb-3 p-0" src="img/course.svg" alt="Course">
+                    <h2 class="fs-6 fw-normal" >Course </h2>
+                </div>
+                <div >
+                    <p class="fs-3 mb-0 mt-5 fw-bold text-end" >13</p>
+                </div>
             </div>
-        </div>
-        <div class="box bg-crs d-flex justify-content-between  rounded-3 p-4 m-3  h-100">
-            <div>
-                <img class="my-3 w-75 p-0" src="img/course.svg" alt="Course">
-                <h2 >Course </h2>
+            <div class="col  bg-pay  rounded-3 p-4 " style="min-width: 200px;">
+                <div>
+                    <img class="mb-3 p-0" src="img/payment.svg" alt="payment">
+                    <h2 class="fs-6 fw-normal" >Payments</h2>
+                </div>
+                <div >
+                    <p class="fs-3 mb-0 mt-5 fw-bold text-end" ><span class="fs-5">DHS</span> 556,000</p>
+                </div>
             </div>
-            <div >
-                <p class="fs-3 fw-bold position-relative">13</p>
-            </div>
-        </div>
-        <div class="box bg-pay  d-flex justify-content-between  rounded-3 p-4 m-3 h-100 ">
-            <div>
-                <img class="my-3 w-75 p-0" src="img/payment.svg" alt="payment">
-                <h2 >Payments</h2>
-            </div>
-            <div >
-                <p class="fs-3 fw-bold position-relative"><span class="fs-5">DHS</span> 556,000</p>
-            </div>
-        </div>
-        <div class="box bg-use d-flex justify-content-between  rounded-3 p-4 m-3 h-100">
-            <div>
-                <img class="my-3 w-75 p-0" src="img/user.svg" alt="user">
-                <h2>Users</h2>
-            </div>
-            <div >
-                <p class="fs-3 fw-bold position-relative">3</p>
+            <div class="col bg-use rounded-3 p-4 " style="min-width: 200px;">
+                <div>
+                    <img class="mb-3 p-0" src="img/user.svg" alt="user">
+                    <h2 class="fs-6 fw-normal">Users</h2>
+                </div>
+                <div >
+                    <p class="fs-3 mb-0 mt-5 fw-bold text-end" >3</p>
+                </div>
             </div>
         </div>
     </main>

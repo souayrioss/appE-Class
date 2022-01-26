@@ -24,15 +24,15 @@
     }
     function navbar(){
         echo '
-        <div class="my-container bg-white d-flex flex-row align-items-center justify-content-between p-3">
+        <header class="my-container bg-white d-flex flex-row align-items-center justify-content-between p-3">
         <div>
             <button class="menu-btn bg-white shadow-none border-0" id="menu-btn" type="button"><img src="img/Vector.svg" alt="navbar" style="transform: rotate(180deg);"></button>
         </div>
         <form class="d-flex">
             <div class="d-flex form-inputs"> <input class="form-control" type="text" placeholder="Search any product..."> <i class="bi bi-search"></i> </div>
-            <i class="bi bi-bell p-2 mx-3"></i>
+            <i class="bi bi-bell p-2 mx-1 mx-md-2 mx-lg-3 "></i>
         </form>
-    </div>
+    </header>
         ';
     }
     $student = array (
@@ -54,16 +54,25 @@
             ['email' => 'H-Jabane@gmail.com', 'password' => 'azert'],
             ['email' => 'Mr-Mourad@gmail.com', 'password' => 'azertii']
         );
-        foreach($admin as $row){
-                $foundEm = in_array($_POST['email'], $row);
-                $foundPs = in_array($_POST['password'], $row);
-                if($foundEm && $foundPs){
-                    session_start();
-                    $_SESSION['email'] =$_POST['email'];
-                    header('Location: http://localhost/appE-Class/dashboard.php'); 
-                                }
-            }
+        
+        if(!(count($_POST) === 0)){
+            foreach($admin as $row){
+                    $foundEm = in_array($_POST['email'], $row);
+                    $foundPs = in_array($_POST['password'], $row);
+                    if($foundEm && $foundPs){
+                        session_start();
+                        $_SESSION['email'] =$_POST['email'];
+                        header('Location: dashboard.php'); 
+                    }else {
+                        header('Location: index.php?error');
+                    }
+                }
+        }
+    }
+    function addStudent() {
+        array_push($student,$_POST);
     }
 
 
+    
 ?>

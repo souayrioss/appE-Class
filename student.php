@@ -24,21 +24,50 @@
                     </div>
                     <div>
                         <img class="mx-3" src="img/sort.svg" alt="sort" style="height: 19px;">
-                        <button type="button" class="btn btn-info text-white  p-2 rounded-3">ADD NEW STUDENT</button>
+                        <button type="button" class="btn btn-info text-white  p-2 rounded-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >ADD NEW STUDENT</button>
+                    </div>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">ADD NEW STUDENT</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form class="row g-3" method="post" action="">
+                                    <div class="modal-body ">
+                                        <div class="d-flex flex-column  align-items-center ">
+                                            <label class="form-label text-muted ">Name</label>
+                                            <input type="text" class="form-control shadow-none w-75" name="name"required> 
+                                            <label class="form-label text-muted mt-3">email</label>
+                                            <input type="text" class="form-control shadow-none w-75" name="email" required>
+                                            <label class="form-label text-muted mt-3">phone</label>
+                                            <input type="text" class="form-control shadow-none w-75 " name="phone" required> 
+                                            <label class="form-label text-muted mt-3">enroll Number</label>
+                                            <input type="text" class="form-control shadow-none w-75" name="enrollNumber"  required>
+                                            <label for="name" class="form-label text-muted mt-3">date Of Admission</label>
+                                            <input type="text" class="form-control shadow-none w-75" name="dateOfAdmission"  required> 
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-info px-5 text-white fw-bold">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </header>
                 <div class="table-responsive">
                 <table class="table" id="tab">
-                    <thead class=" text-start text-black-50 align-middle">
+                    <thead class=" text-start align-middle">
                         <tr>
-                            <th > </th>
+                            <td > </td>
                             <th >Name</th>
                             <th >Email</th>
                             <th >Phone</th>
                             <th >Enroll Number</th>
                             <th >Date of admission</th>
-                            <th > </th>
-                            <th > </th>
+                            <td > </td>
+                            <td > </td>
                         </tr>
                     </thead>
                     <tbody class=" border-0 ">
