@@ -42,15 +42,15 @@
                         <tbody class="bg-white border-0">
                         <?php
                                 foreach($payment as $row){
-                                    echo '<tr class="bg-white align-middle" > ';
-                                    foreach($row as $col){
-                                        echo '
-                                            <td >'  . $col. '</td>
-                                    ';
-                                    }
-                                    echo '
-                                    <td class="py-3"><i class="bi bi-eye text-info"></i></td>
-                                    </tr> ';
+                                    echo '<tr class="bg-white align-middle" >
+                                        <td>'.$row['name'].'</td>
+                                        <td>'.$row['paymentSchedule'].'</td>
+                                        <td>'.$row['billNumber'].'</td>
+                                        <td>'.$row['amountPaid'].'</td>
+                                        <td>'.$row['nalanceAmount'].'</td>
+                                        <td>'.$row['date'].'</td>
+                                        <td class="py-3"><i class="bi bi-eye text-info"></i></td>
+                                        </tr>';
                                 }
                                 ?>
                         </tbody>

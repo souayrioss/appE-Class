@@ -36,12 +36,9 @@
         ';
     }
     $student = array (
-        ['name' => 'oussama', 'email' => 'souayrioss@gmail.com', 'phone' => '0612345678', 'enrollNumber' => '1234567890', 'dateOfAdmission' => '99-erth, 0000'],
-        ['name' => 'Qossay', 'email' => 'qossayria@gmail.com', 'phone' => '068765432', 'enrollNumber' => '0987654321', 'dateOfAdmission' => '00-pliton, 9999'],
-        ['name' => 'zoubair', 'email' => 'zoubairsou@gmail.com', 'phone' => '0656748930', 'enrollNumber' => '012938474', 'dateOfAdmission' => '66-ZOO, 2001'],
-        ['name' => 'oussama', 'email' => 'souayrioss@gmail.com', 'phone' => '0612345678', 'enrollNumber' => '1234567890', 'dateOfAdmission' => '99-erth, 0000'],
-        ['name' => 'Qossay', 'email' => 'qossayria@gmail.com', 'phone' => '068765432', 'enrollNumber' => '0987654321', 'dateOfAdmission' => '00-pliton, 9999'],
-        ['name' => 'zoubair', 'email' => 'zoubairsou@gmail.com', 'phone' => '0656748930', 'enrollNumber' => '012938474', 'dateOfAdmission' => '66-ZOO, 2001']      
+        ['oussama', 'souayrioss@gmail.com', '0612345678', '1234567890', '99-erth, 0000'],
+        ['Qossay', 'qossayria@gmail.com', '068765432', '0987654321', '00-pliton, 9999'],
+        ['zoubair', 'zoubairsou@gmail.com', '0656748930', '012938474', '66-ZOO, 2001']      
     );
     $payment  = array (
         ['name' => 'oussama', 'paymentSchedule' => 'First', 'billNumber' => '00011225', 'amountPaid' => '300', 'nalanceAmount' => '500', 'date' => '00/00/0000'],
@@ -63,7 +60,6 @@
                         session_start();
                         $_SESSION['email'] =$_POST['email'];
                         header('Location: dashboard.php'); 
-                        break;
                     }else {
                         header('Location: index.php?error');
                     }
@@ -71,7 +67,10 @@
         }
     }
     function addStudent() {
-        array_push($student,$_POST);
+        if(!(count($_GET) === 0)){
+            array_push($student,$_GET);
+            header('Location: student.php?$_GET');
+        }
     }
 
 
