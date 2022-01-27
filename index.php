@@ -27,11 +27,11 @@
                 <form class="row g-3" method="POST" >
                     <div >
                         <label class="form-label text-muted">E-mail</label>
-                        <input type="text" class="form-control shadow-none p-2 " name="email" placeholder="Enter your email" required> 
+                        <input type="text" class="form-control shadow-none p-2 " name="username" placeholder="Enter your email" required> 
                     </div>
                     <div class="mb-4">
                         <label class="form-label text-muted">Password</label>
-                        <input type="text" class="form-control shadow-none p-2" name="password" placeholder="Enter your password" required>
+                        <input type="password" class="form-control shadow-none p-2" name="password" placeholder="Enter your password" required>
                     </div>
                     <div >
                         <input class="btn btn-info w-100 p-2 mb-3 text-uppercase text-white" type="submit" value="Sign in">

@@ -7,14 +7,20 @@
                 </div>
                 <div class="profil text-center mb-lg-4 mx-auto">
                     <img class=" rounded-circle mb-3" src="img/youcode.png" alt="admin">
-                    <h2>'.$_SESSION['email'].'</h2>
+                    <h2>'.$_SESSION['username'].'</h2>
                     <p class="rol text-info">Admin</p>
                 </div>
                 <ul class="navbar-nav d-flex flex-column mx-auto">
-                    <li class="nav-item  rounded-3 px-lg-5 mb-2"><a class="nav-link text-black " href="dashboard.php" > <i class="bi bi-house-door p-2"></i><span>Home</span></a></li>
+                    <li class="nav-item  rounded-3 px-lg-5 mb-2 ';
+                    if(basename($_SERVER["REQUEST_URI"]) == "dashboard.php"){ echo "bg-info" ;}else{ echo "bg-transparent";}
+                    echo ' "><a href="dashboard.php" class="nav-link text-black"> <i class="bi bi-house-door p-2"></i><span>Home</span></a></li>
                     <li class="nav-item rounded-3 px-lg-5 mb-2"><a class="nav-link text-black" href="#" ><i class="bi bi-bookmark p-2"></i><span>Course</span></a></li>
-                    <li class="nav-item rounded-3 px-lg-5 mb-2"><a class="nav-link text-black" href="student.php" ><i class="bi bi-book p-2"></i><span>Student</span></a></li>
-                    <li class="nav-item rounded-3 px-lg-5 mb-2"><a class="nav-link text-black" href="payment.php" ><i class="bi bi-coin p-2"></i><span>Paiment</span></a></li>
+                    <li class="nav-item rounded-3 px-lg-5 mb-2 ';
+                    if(basename($_SERVER["REQUEST_URI"]) == "student.php"){ echo "bg-info" ;}else{ echo "bg-transparent";}
+                    echo ' "><a class="nav-link text-black" href="student.php" ><i class="bi bi-book p-2"></i><span>Student</span></a></li>
+                    <li class="nav-item rounded-3 px-lg-5 mb-2 ';
+                    if(basename($_SERVER["REQUEST_URI"]) == "payment.php"){ echo "bg-info" ;}else{ echo "bg-transparent";}
+                    echo ' "><a class="nav-link text-black" href="payment.php" ><i class="bi bi-coin p-2"></i><span>Paiment</span></a></li>
                     <li class="nav-item rounded-3 px-lg-5 mb-2"><a class="nav-link text-black" href="#" ><i class="bi bi-clipboard-data p-2"></i><span>Report</span></a></li>
                     <li class="nav-item rounded-3 px-lg-5 mb-5"><a class="nav-link text-black" href="#" ><i class="bi bi-sliders p-2"></i><span>Setting</span></a></li>
                     <li class="nav-item rounded-3 text-center mt-md-3 "><a class="nav-link text-black" href="index.php" ><span>Log out</span><i class="bi bi-box-arrow-right p-2"></i></a></li>
@@ -48,18 +54,19 @@
     );
     function check(){
         $admin = array (
-            ['email' => 'H-Jabane@gmail.com', 'password' => 'azert'],
-            ['email' => 'Mr-Mourad@gmail.com', 'password' => 'azertii']
+            ['username' => 'H.Jabane', 'password' => 'azert'],
+            ['username' => 'Mr.Mourad', 'password' => 'azertii']
         );
         
         if(!(count($_POST) === 0)){
             foreach($admin as $row){
-                    $foundEm = in_array($_POST['email'], $row);
+                    $foundEm = in_array($_POST['username'], $row);
                     $foundPs = in_array($_POST['password'], $row);
                     if($foundEm && $foundPs){
                         session_start();
-                        $_SESSION['email'] =$_POST['email'];
+                        $_SESSION['username'] =$_POST['username'];
                         header('Location: dashboard.php'); 
+                        break;
                     }else {
                         header('Location: index.php?error');
                     }
