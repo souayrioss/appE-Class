@@ -26,8 +26,8 @@
                 ?>
                 <form class="row g-3" method="POST" >
                     <div >
-                        <label class="form-label text-muted">E-mail</label>
-                        <input type="text" class="form-control shadow-none p-2 " name="username" placeholder="Enter your email" required> 
+                        <label class="form-label text-muted">UserName</label>
+                        <input type="text" class="form-control shadow-none p-2 " name="username" placeholder="Enter your UserName" required> 
                     </div>
                     <div class="mb-4">
                         <label class="form-label text-muted">Password</label>
