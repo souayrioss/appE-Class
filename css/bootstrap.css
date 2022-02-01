@@ -7591,7 +7591,9 @@ textarea.form-control-lg {
 .font-monospace {
   font-family: var(--bs-font-monospace) !important;
 }
-
+.fs-lg-1 {
+  font-size: calc(1.375rem + 1.5vw) !important;
+}
 .fs-1 {
   font-size: calc(1.375rem + 1.5vw) !important;
 }
@@ -7599,7 +7601,9 @@ textarea.form-control-lg {
 .fs-2 {
   font-size: calc(1.325rem + 0.9vw) !important;
 }
-
+.fs-md-3 {
+  font-size: calc(1.3rem + 0.6vw) !important;
+}
 .fs-3 {
   font-size: calc(1.3rem + 0.6vw) !important;
 }

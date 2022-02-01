@@ -70,6 +70,9 @@ th,td{
     border-collapse: separate;  
     border-spacing: 0 15px;
 }
+main header {
+    overflow-x: auto;
+}
 @media screen and (max-width:800px) {
     .logo h1{
         font-size:  16px;
@@ -87,6 +90,7 @@ th,td{
     .nav-link{
         font-size: 12px;
     }
+
     
 }
 @media screen and (max-width:530px) {
@@ -106,5 +110,5 @@ th,td{
     .nav-link span{
         display: none;
     }
-    
+
 }

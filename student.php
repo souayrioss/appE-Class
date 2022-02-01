@@ -18,13 +18,13 @@
         navbar();
     ?>
             <main class="boxes position-absolute p-3" >
-                <header class="d-flex flex-row justify-content-between pb-3 m-3 border-bottom border-2 ">
-                        <div> 
-                        <h3 style="font-weight: 700;">Students List</h3>
+                <header class="d-flex flex-wrap justify-content-between align-items-center pb-3 my-3 border-bottom border-2 ">
+                    <div> 
+                        <h3 class="fs-2 fw-bolder mx-3">Students List</h3>
                     </div>
-                    <div>
-                        <img class="mx-3" src="img/sort.svg" alt="sort" style="height: 19px;">
-                        <button type="button" class="btn btn-info text-white  p-2 rounded-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >ADD NEW STUDENT</button>
+                    <div class="d-flex flex-nowrap align-items-center ">
+                        <img class="mx-2 h-50" src="img/sort.svg" alt="sort" ">
+                        <button type="button" class="btn btn-info text-white px-1 px-md-3 rounded-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >ADD NEW STUDENT</button>
                     </div>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
