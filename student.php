@@ -24,32 +24,64 @@
                     </div>
                     <div class="d-flex flex-nowrap align-items-center ">
                         <img class="mx-2 h-50" src="img/sort.svg" alt="sort" ">
-                        <button type="button" class="btn btn-info text-white px-1 px-md-3 rounded-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >ADD NEW STUDENT</button>
+                        <button type="button" class="btn btn-info text-white px-1 px-md-3 rounded-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >ADD NEW <i class="bi bi-person-plus-fill"></i></button>
+                        <button type="button" class="btn btn-info text-white mx-2 px-1 px-md-3 rounded-3" data-bs-toggle="modal" data-bs-target="#staticAplFile" >UPLOAD <i class="bi bi-file-diff-fill"></i></button>
                     </div>
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <!-- modal for add students -->
+                    <div class="modal fade" id="staticBackdrop" >
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">ADD NEW STUDENT</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form class="row g-3" method="post" action="">
+                                <?php
+                                    require_once 'include.php';
+                                    if($_SERVER['REQUEST_METHOD']==='POST'){
+                                        addStd($_POST);
+                                        header('Location: student.php');
+                                    }
+                                ?>
+                                <form class="row g-3" method="post" >
                                     <div class="modal-body ">
                                         <div class="d-flex flex-column  align-items-center ">
                                             <label class="form-label text-muted ">Name</label>
-                                            <input type="text" class="form-control shadow-none w-75" name="name"required> 
+                                            <input type="text" class="form-control shadow-none w-75" name="name"> 
                                             <label class="form-label text-muted mt-3">email</label>
-                                            <input type="text" class="form-control shadow-none w-75" name="email" required>
+                                            <input type="text" class="form-control shadow-none w-75" name="email" >
                                             <label class="form-label text-muted mt-3">phone</label>
-                                            <input type="text" class="form-control shadow-none w-75 " name="phone" required> 
+                                            <input type="tel" class="form-control shadow-none w-75 " name="phone" > 
                                             <label class="form-label text-muted mt-3">enroll Number</label>
-                                            <input type="text" class="form-control shadow-none w-75" name="enrollNumber"  required>
+                                            <input type="tel" class="form-control shadow-none w-75" name="enrollNumber"  >
                                             <label for="name" class="form-label text-muted mt-3">date Of Admission</label>
-                                            <input type="text" class="form-control shadow-none w-75" name="dateOfAdmission"  required> 
+                                            <input type="date" class="form-control shadow-none w-75" name="date"  > 
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-info px-5 text-white fw-bold">Save</button>
+                                    <button type="submit" class="btn btn-info px-5 text-white fw-bold" >Save</button>
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- modal for upload file -->
+                    <div class="modal fade" id="staticAplFile" data-bs-backdrop="static" >
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Upload Files</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form class="row g-3" method="post" >
+                                    <div class="modal-body ">
+
+                                            <label class="form-label text-muted ">Name</label>
+                                            <input type="file" class="form-control shadow-none w-75">
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="submit" class="btn btn-info px-5 text-white fw-bold" >upload</button>
                                     </div>
                                 </form>
                             </div>
@@ -72,21 +104,39 @@
                     </thead>
                     <tbody class=" border-0 ">
                     <?php
-                        foreach($student as $row){
-                            echo '<tr class="bg-white align-middle" >
-                            <td class="text-center "><img  src="img/username.png" alt="username"></td>';
-                            foreach($row as $col){
-                                echo '
-                                    <td >'  . $col. '</td>
-                            ';
+                        $student = getStudents();
+                        if(!empty($student)){
+                        foreach($student as $row){ 
+                            echo'
+                            <tr class="bg-white align-middle">
+                                <td class="text-center "><img  src="img/username.png" alt="username"></td>
+                                <td>' . $row['name'] . '</td>
+                                <td>' . $row['email'] . '</td>
+                                <td>' . $row['phone'] . '</td>
+                                <td>' . $row['enrollNumber'] . '</td>
+                                <td>' . $row['date'] . '</td>'; ?>
+                                <td><a href="update.php?id=<?php echo $row['id']; ?>"><i class="bi bi-pencil text-info"></i></a></td>
+                                <td><a href="delete.php?id=<?php echo $row['id']; ?>"><i class="bi bi-trash text-info"></i></a> </td>
+                            </tr>
+                            <?php
                             }
-
-                            echo '
-                                <td ><i class="bi bi-pencil text-info"></i></td>
-                                <td ><i class="bi bi-trash text-info"></i></td>
-                            </tr>';
                         }
-                        ?>
+                    ?>
+                        <!-- // foreach($student as $row){
+                        //     echo '<tr class="bg-white align-middle" >
+                        //     <td class="text-center "><img  src="img/username.png" alt="username"></td>';
+                        //     foreach($row as $col){
+                        //         echo '
+                        //             <td >'  . $col. '</td>
+                        //     ';
+                        //     }
+
+                        //     echo '
+                        //         <td ><i class="bi bi-pencil text-info"></i></td>
+                        //         <td ><i class="bi bi-trash text-info"></i></td>
+                        //     </tr>';
+                        // }
+                        ?> -->
                         </tbody>
                     </table>
                 </div>

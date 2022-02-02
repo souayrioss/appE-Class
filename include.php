@@ -41,11 +41,11 @@
     </header>
         ';
     }
-    $student = array (
-        ['oussama', 'souayrioss@gmail.com', '0612345678', '1234567890', '99-erth, 0000'],
-        ['Qossay', 'qossayria@gmail.com', '068765432', '0987654321', '00-pliton, 9999'],
-        ['zoubair', 'zoubairsou@gmail.com', '0656748930', '012938474', '66-ZOO, 2001']      
-    );
+    // $student = array (
+    //     ['oussama', 'souayrioss@gmail.com', '0612345678', '1234567890', '99-erth, 0000'],
+    //     ['Qossay', 'qossayria@gmail.com', '068765432', '0987654321', '00-pliton, 9999'],
+    //     ['zoubair', 'zoubairsou@gmail.com', '0656748930', '012938474', '66-ZOO, 2001']      
+    // );
     $payment  = array (
         ['name' => 'oussama', 'paymentSchedule' => 'First', 'billNumber' => '00011225', 'amountPaid' => '300', 'nalanceAmount' => '500', 'date' => '00/00/0000'],
         ['name' => 'Qossay', 'paymentSchedule' => 'Last', 'billNumber' => '00044339', 'amountPaid' => '400', 'nalanceAmount' => '9999', 'date' => '01/01/0000'],
@@ -73,10 +73,70 @@
                 }
         }
     }
-    function addStudent() {
-        if(!(count($_GET) === 0)){
-            array_push($student,$_GET);
-            header('Location: student.php?$_GET');
+    // Function for Json File
+    function getStudents()
+    {
+        return json_decode(file_get_contents('js/student.json'),true);
+    }
+    // function putStudents()
+    // {
+    //     return file_put_contents('js/student.json',json_encode());
+    // }
+    function getStudentById($id)
+    {
+        $students = getStudents() ;
+        foreach($students as $student){
+            if ($student['id'] == $id){
+                return $student;
+            }
         }
     }
+    function maxId(){
+        $students = getStudents() ;
+        $max=0;
+        foreach($students as $student){
+                if ($max < $student['id']){
+                    $max = $student['id'];
+                }
+        }
+        return $max;
+    }
+    function addStd($data)
+    {
+            $student = getStudents();
+            $add_arr = array(
+            'id'   => maxId()+1,
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'enrollNumber' => $data['enrollNumber'],
+            'date' => $data['date']
+            );
+            $student[] = $add_arr;
+            
+            $datas = json_encode($student, JSON_PRETTY_PRINT);
+            file_put_contents('js/student.json', $datas);
+    }
+
+    function updateStd($data,$id)
+    {
+        $students = getStudents() ;
+        foreach($students as $key => $student){
+            if($student['id'] == $id ){
+                $students[$key] = array_merge($student,$data);
+            }
+        } 
+        file_put_contents('js/student.json',json_encode($students)); 
+    }
+    function deleteStd($id){
+        $students = getStudents() ;
+        foreach($students as $key => $student){
+            if($student['id'] == $id ){
+                unset($students[$key]);
+                
+            }
+        }
+        file_put_contents('js/student.json',json_encode($students));  
+    }
+
 ?>
