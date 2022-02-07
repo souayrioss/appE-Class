@@ -66,6 +66,7 @@
                         </div>
                     </div>
                     <!-- modal for upload file -->
+                    
                     <div class="modal fade" id="staticAplFile" data-bs-backdrop="static" >
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -73,20 +74,19 @@
                                     <h5 class="modal-title">Upload Files</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form class="row g-3" method="post" >
+                                <form class="row g-3" method="post" action="upload.php" enctype="multipart/form-data">
                                     <div class="modal-body ">
-
-                                            <label class="form-label text-muted ">Name</label>
-                                            <input type="file" class="form-control shadow-none w-75">
-                                        
+                                            <label class="form-label text-muted ">upload your file</label>
+                                            <input type="file" class="form-control shadow-none w-75" name="file_up">
                                     </div>
                                     <div class="modal-footer">
-                                    <button type="submit" class="btn btn-info px-5 text-white fw-bold" >upload</button>
+                                    <input type="submit" name = "upload_file" class="btn btn-info px-5 text-white fw-bold" value="UPLOAD">
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
+                    
                 </header>
                 <div class="table-responsive">
                 <table class="table" id="tab">

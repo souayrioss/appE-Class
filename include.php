@@ -64,7 +64,7 @@
                     $foundPs = in_array($_POST['password'], $row);
                     if($foundEm && $foundPs){
                         session_start();
-                        $_SESSION['username'] =$_POST['username'];
+                        $_SESSION['username'] = $_POST['username'];
                         header('Location: dashboard.php'); 
                         break;
                     }else {
@@ -85,6 +85,7 @@
     function getStudentById($id)
     {
         $students = getStudents() ;
+
         foreach($students as $student){
             if ($student['id'] == $id){
                 return $student;
@@ -92,14 +93,15 @@
         }
     }
     function maxId(){
-        $students = getStudents() ;
+        $students =  getStudents()  ;
         $max=0;
-        foreach($students as $student){
-                if ($max < $student['id']){
-                    $max = $student['id'];
-                }
-        }
-        return $max;
+            foreach($students as $student){
+                    if ($max < $student['id']){
+                        $max = $student['id'];
+                    }
+            }
+            return $max;
+            
     }
     function addStd($data)
     {
@@ -117,6 +119,7 @@
             $datas = json_encode($student, JSON_PRETTY_PRINT);
             file_put_contents('js/student.json', $datas);
     }
+        
 
     function updateStd($data,$id)
     {
