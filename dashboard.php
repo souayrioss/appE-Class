@@ -27,7 +27,7 @@
                     <h2 class="fs-6 fw-normal">Students </h2>
                 </div>
                 <div >
-                    <p class="fs-3 mb-0 mt-5 fw-bold text-end" >243</p>
+                    <p class="fs-3 mb-0 mt-5 fw-bold text-end" ><?php $req="SELECT count(id) from student"; $res=$cnx ->query($req); $row = mysqli_fetch_array($res); echo $row[0]; ?></p>
                 </div>
             </div>
             <div class="col bg-crs rounded-3 p-4 " style="min-width: 200px;">
@@ -36,7 +36,7 @@
                     <h2 class="fs-6 fw-normal" >Course </h2>
                 </div>
                 <div >
-                    <p class="fs-3 mb-0 mt-5 fw-bold text-end" >13</p>
+                    <p class="fs-3 mb-0 mt-5 fw-bold text-end" ><?php $req="SELECT count(id) from course"; $res=$cnx ->query($req); $row = mysqli_fetch_array($res); echo $row[0]; ?></p>
                 </div>
             </div>
             <div class="col  bg-pay  rounded-3 p-4 " style="min-width: 200px;">
@@ -45,7 +45,7 @@
                     <h2 class="fs-6 fw-normal" >Payments</h2>
                 </div>
                 <div >
-                    <p class="fs-3 mb-0 mt-5 fw-bold text-end" ><span class="fs-5">DHS</span> 556,000</p>
+                    <p class="fs-3 mb-0 mt-5 fw-bold text-end" ><span class="fs-5"></span> <?php $req="SELECT sum(amountPaid ) from payment"; $res=$cnx ->query($req); $row = mysqli_fetch_array($res); $total = (float)$row[0]; echo $total ; ?> DHS</p>
                 </div>
             </div>
             <div class="col bg-use rounded-3 p-4 " style="min-width: 200px;">

@@ -1,4 +1,10 @@
 <?php
+        $cnx= new mysqli("localhost","root","","e-class");
+        if($cnx->connect_error){
+            die("Connection failed: " . $cnx->connect_error);
+            }
+
+
     function sidbar(){
         echo '
             <nav class="navbar navbar-expand d-flex flex-column align-items-start" id="sideBar">
@@ -14,7 +20,9 @@
                     <li class="nav-item  rounded-3 px-lg-5 mb-2 ';
                     if(basename($_SERVER["REQUEST_URI"]) == "dashboard.php"){ echo "bg-info" ;}else{ echo "bg-transparent";}
                     echo ' "><a href="dashboard.php" class="nav-link text-black"> <i class="bi bi-house-door p-2"></i><span>Home</span></a></li>
-                    <li class="nav-item rounded-3 px-lg-5 mb-2"><a class="nav-link text-black" href="#" ><i class="bi bi-bookmark p-2"></i><span>Course</span></a></li>
+                    <li class="nav-item  rounded-3 px-lg-5 mb-2 ';
+                    if(basename($_SERVER["REQUEST_URI"]) == "course.php"){ echo "bg-info" ;}else{ echo "bg-transparent";}
+                    echo '"><a class="nav-link text-black" href="course.php" ><i class="bi bi-bookmark p-2"></i><span>Course</span></a></li>
                     <li class="nav-item rounded-3 px-lg-5 mb-2 ';
                     if(basename($_SERVER["REQUEST_URI"]) == "student.php"){ echo "bg-info" ;}else{ echo "bg-transparent";}
                     echo ' "><a class="nav-link text-black" href="student.php" ><i class="bi bi-book p-2"></i><span>Student</span></a></li>
@@ -52,6 +60,8 @@
         ['name' => 'zoubair', 'paymentSchedule' => 'First', 'billNumber' => '00099771', 'amountPaid' => '200', 'nalanceAmount' => '0000', 'date' => '02/02/0000'],
         ['name' => 'Oways', 'paymentSchedule' => 'First', 'billNumber' => '00088571', 'amountPaid' => '2100', 'nalanceAmount' => '0001', 'date' => '07/09/9999'],
     );
+        
+
     function check(){
         $admin = array (
             ['username' => 'H.Jabane', 'password' => 'azert'],
@@ -104,32 +114,78 @@
             
     }
     function addStd($data)
-    {
-            $student = getStudents();
-            $add_arr = array(
-            'id'   => maxId()+1,
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'enrollNumber' => $data['enrollNumber'],
-            'date' => $data['date']
-            );
-            $student[] = $add_arr;
+    {       
+            $imgName =$_FILES['image']['name'];
+            $image = $_FILES['image'];
+            move_uploaded_file($image['tmp_name'], "./img/$imgName");
+            $fname = $data['firstName'];
+            $lname = $data['lastName'];
+            $email = $data['email'];
+            $phone =$data['phone'];
+            $enrollNumber = $data['enrollNumber'];
+            $dateOfAdmission = $data['dateOfAdmission'];
+            $creat = date("Y-m-d");
             
-            $datas = json_encode($student, JSON_PRETTY_PRINT);
-            file_put_contents('js/student.json', $datas);
+
+        $req=" INSERT INTO student (image, firstname, lastname, email, phone, enrollNumber, dateOfAdmission, created_at )VALUES ('$imgName', '$fname', '$lname', '$email', '$phone', '$enrollNumber', '$dateOfAdmission' ,'$creat')";
+        global $cnx;
+        $cnx -> query($req);
+        header('location: student.php');
+
+
+            // $student = getStudents();
+            // $add_arr = array(
+            // 'id'   => maxId()+1,
+            // 'name' => $data['name'],
+            // 'email' => $data['email'],
+            // 'phone' => $data['phone'],
+            // 'enrollNumber' => $data['enrollNumber'],
+            // 'date' => $data['date']
+            // );
+            // $student[] = $add_arr;
+            
+            // $datas = json_encode($student, JSON_PRETTY_PRINT);
+            // file_put_contents('js/student.json', $datas);
+    }
+    function addCrs($data)
+    {       
+        $imgName =$_FILES['image']['name'];
+        $image = $_FILES['image'];
+        move_uploaded_file($image['tmp_name'], "./img/$imgName");
+        $title = $data['title'];
+        $categorie =$data['categorie'];
+        $description = $data['description'];
+        $price = $data['price'];
+        $date = date("Y-m-d");
+
+        $req=" INSERT INTO course (image, title, categorie, description, price, dateCourse )VALUES ('$imgName', '$title', '$categorie', '$description', '$price', '$date')";
+        global $cnx;
+        $cnx -> query($req);
+        header('location: course.php');
+        
+
     }
         
 
     function updateStd($data,$id)
     {
-        $students = getStudents() ;
-        foreach($students as $key => $student){
-            if($student['id'] == $id ){
-                $students[$key] = array_merge($student,$data);
-            }
-        } 
-        file_put_contents('js/student.json',json_encode($students)); 
+            $fname = $data['firstName'];
+            $lname = $data['lastName'];
+            $email = $data['email'];
+            $phone =$data['phone'];
+            $enrollNumber = $data['enrollNumber'];
+            $dateOfAdmission = $data['dateOfAdmission'];
+            $update = date("Y-m-d");
+            $req = "UPDATE student SET firstName= '$fname', lastName = '$lname', email = '$email', phone = '$phone', enrollNumber = '$enrollNumber', dateOfAdmission ='$dateOfAdmission' ,updated_at ='$update' WHERE id = '$id' ";
+            global $cnx;
+            $cnx -> query($req);
+        // $students = getStudents() ;
+        // foreach($students as $key => $student){
+        //     if($student['id'] == $id ){
+        //         $students[$key] = array_merge($student,$data);
+        //     }
+        // } 
+        // file_put_contents('js/student.json',json_encode($students)); 
     }
     function deleteStd($id){
         $students = getStudents() ;

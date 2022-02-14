@@ -39,22 +39,26 @@
                                     require_once 'include.php';
                                     if($_SERVER['REQUEST_METHOD']==='POST'){
                                         addStd($_POST);
-                                        header('Location: student.php');
+                                        
                                     }
                                 ?>
-                                <form class="row g-3" method="post" >
+                                <form class="row g-3" method="post" enctype="multipart/form-data" >
                                     <div class="modal-body ">
                                         <div class="d-flex flex-column  align-items-center ">
-                                            <label class="form-label text-muted ">Name</label>
-                                            <input type="text" class="form-control shadow-none w-75" name="name"> 
-                                            <label class="form-label text-muted mt-3">email</label>
+                                            <label class="form-label text-muted ">Image</label>
+                                            <input type="file" class="form-control shadow-none w-75" name="image"> 
+                                            <label class="form-label text-muted ">First Name</label>
+                                            <input type="text" class="form-control shadow-none w-75" name="firstName"> 
+                                            <label class="form-label text-muted ">Last Name</label>
+                                            <input type="text" class="form-control shadow-none w-75" name="lastName">
+                                            <label class="form-label text-muted mt-3">Email</label>
                                             <input type="text" class="form-control shadow-none w-75" name="email" >
-                                            <label class="form-label text-muted mt-3">phone</label>
+                                            <label class="form-label text-muted mt-3">Phone</label>
                                             <input type="tel" class="form-control shadow-none w-75 " name="phone" > 
-                                            <label class="form-label text-muted mt-3">enroll Number</label>
+                                            <label class="form-label text-muted mt-3">Enroll Number</label>
                                             <input type="tel" class="form-control shadow-none w-75" name="enrollNumber"  >
-                                            <label for="name" class="form-label text-muted mt-3">date Of Admission</label>
-                                            <input type="date" class="form-control shadow-none w-75" name="date"  > 
+                                            <label for="name" class="form-label text-muted mt-3">Date Of Admission</label>
+                                            <input type="date" class="form-control shadow-none w-75" name="dateOfAdmission"  > 
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -104,39 +108,25 @@
                     </thead>
                     <tbody class=" border-0 ">
                     <?php
-                        $student = getStudents();
-                        if(!empty($student)){
-                        foreach($student as $row){ 
-                            echo'
-                            <tr class="bg-white align-middle">
-                                <td class="text-center "><img  src="img/username.png" alt="username"></td>
-                                <td>' . $row['name'] . '</td>
-                                <td>' . $row['email'] . '</td>
-                                <td>' . $row['phone'] . '</td>
-                                <td>' . $row['enrollNumber'] . '</td>
-                                <td>' . $row['date'] . '</td>'; ?>
-                                <td><a href="update.php?id=<?php echo $row['id']; ?>"><i class="bi bi-pencil text-info"></i></a></td>
-                                <td><a href="delete.php?id=<?php echo $row['id']; ?>"><i class="bi bi-trash text-info"></i></a> </td>
-                            </tr>
-                            <?php
+                        $req = "SELECT * FROM student";
+                        $res = $cnx -> query($req); 
+                        if ($res -> num_rows > 0){
+                            while($row = $res -> fetch_assoc()){
+                                echo'
+                                <tr class="bg-white align-middle">
+                                    <td class="text-center "><img  src="img/' . $row['image'] . '" alt="username"></td>
+                                    <td>' . $row['firstName'] ." " . $row['lastName'] . '</td>
+                                    <td>' . $row['email'] . '</td>
+                                    <td>' . $row['phone'] . '</td>
+                                    <td>' . $row['enrollNumber'] . '</td>
+                                    <td>' . $row['dateOfAdmission'] . '</td>'; ?>
+                                    <td><a href="update.php?id=<?php echo $row['id']; ?>"><i class="bi bi-pencil text-info"></i></a></td>
+                                    <td><a href="delete.php?id=<?php echo $row['id']; ?>"><i class="bi bi-trash text-info"></i></a> </td>
+                                </tr>
+                                <?php
                             }
                         }
-                    ?>
-                        <!-- // foreach($student as $row){
-                        //     echo '<tr class="bg-white align-middle" >
-                        //     <td class="text-center "><img  src="img/username.png" alt="username"></td>';
-                        //     foreach($row as $col){
-                        //         echo '
-                        //             <td >'  . $col. '</td>
-                        //     ';
-                        //     }
-
-                        //     echo '
-                        //         <td ><i class="bi bi-pencil text-info"></i></td>
-                        //         <td ><i class="bi bi-trash text-info"></i></td>
-                        //     </tr>';
-                        // }
-                        ?> -->
+                        ?>
                         </tbody>
                     </table>
                 </div>

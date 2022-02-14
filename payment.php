@@ -41,17 +41,21 @@
                         </thead>
                         <tbody class="bg-white border-0">
                         <?php
-                                foreach($payment as $row){
+                        $req = "SELECT * FROM student S, course C, payment P where S.id = id_student and C.id = id_course";
+                        $res = $cnx -> query($req);
+                        if ($res -> num_rows > 0){
+                        while($row = $res -> fetch_assoc()){
                                     echo '<tr class="bg-white align-middle" >
-                                        <td>'.$row['name'].'</td>
+                                        <td>'.$row['firstName']." ". $row['lastName'].'</td>
                                         <td>'.$row['paymentSchedule'].'</td>
                                         <td>'.$row['billNumber'].'</td>
                                         <td>'.$row['amountPaid'].'</td>
-                                        <td>'.$row['nalanceAmount'].'</td>
-                                        <td>'.$row['date'].'</td>
-                                        <td class="py-3"><i class="bi bi-eye text-info"></i></td>
-                                        </tr>';
+                                        <td>'.$row['balanceAmount'].'</td>
+                                        <td>'.$row['date'].'</td>'; ?>
+                                        <td class="py-3"><a href="paymentDetail.php?id=<?php echo $row['id']; ?>"><i class="bi bi-eye text-info"></i></a></td>
+                                        </tr><?php
                                 }
+                            }
                                 ?>
                         </tbody>
                     </table>
