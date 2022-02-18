@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php session_start();
+if(empty($_SESSION)){
+    header('location: index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,27 +42,30 @@
                                 <?php
                                     require_once 'include.php';
                                     if($_SERVER['REQUEST_METHOD']==='POST'){
-                                        addStd($_POST);
-                                        
+                                        if(!empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['phone']) && !empty($_POST['enrollNumber']) && !empty($_POST['dateOfAdmission'])){
+                                            addStd($_POST);
+                                            }
                                     }
                                 ?>
                                 <form class="row g-3" method="post" enctype="multipart/form-data" >
                                     <div class="modal-body ">
                                         <div class="d-flex flex-column  align-items-center ">
                                             <label class="form-label text-muted ">Image</label>
-                                            <input type="file" class="form-control shadow-none w-75" name="image"> 
+                                            <input type="file" class="form-control shadow-none w-75" name="image" required> 
                                             <label class="form-label text-muted ">First Name</label>
-                                            <input type="text" class="form-control shadow-none w-75" name="firstName"> 
+                                            <input type="text" class="form-control shadow-none w-75" name="firstName" required> 
                                             <label class="form-label text-muted ">Last Name</label>
-                                            <input type="text" class="form-control shadow-none w-75" name="lastName">
-                                            <label class="form-label text-muted mt-3">Email</label>
-                                            <input type="text" class="form-control shadow-none w-75" name="email" >
-                                            <label class="form-label text-muted mt-3">Phone</label>
-                                            <input type="tel" class="form-control shadow-none w-75 " name="phone" > 
-                                            <label class="form-label text-muted mt-3">Enroll Number</label>
-                                            <input type="tel" class="form-control shadow-none w-75" name="enrollNumber"  >
-                                            <label for="name" class="form-label text-muted mt-3">Date Of Admission</label>
-                                            <input type="date" class="form-control shadow-none w-75" name="dateOfAdmission"  > 
+                                            <input type="text" class="form-control shadow-none w-75" name="lastName" required>
+                                            <label class="form-label text-muted ">Email</label>
+                                            <input type="text" class="form-control shadow-none w-75" name="email" required>
+                                            <label class="form-label text-muted ">Password</label>
+                                            <input type="text" class="form-control shadow-none w-75" name="password" required>
+                                            <label class="form-label text-muted ">Phone</label>
+                                            <input type="tel" class="form-control shadow-none w-75 " name="phone" required> 
+                                            <label class="form-label text-muted ">Enroll Number</label>
+                                            <input type="tel" class="form-control shadow-none w-75" name="enrollNumber"  required>
+                                            <label for="name" class="form-label text-muted">Date Of Admission</label>
+                                            <input type="date" class="form-control shadow-none w-75" name="dateOfAdmission"  required> 
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -108,7 +115,7 @@
                     </thead>
                     <tbody class=" border-0 ">
                     <?php
-                        $req = "SELECT * FROM student";
+                        $req = "SELECT * FROM user where id_role='3'";
                         $res = $cnx -> query($req); 
                         if ($res -> num_rows > 0){
                             while($row = $res -> fetch_assoc()){
@@ -120,7 +127,7 @@
                                     <td>' . $row['phone'] . '</td>
                                     <td>' . $row['enrollNumber'] . '</td>
                                     <td>' . $row['dateOfAdmission'] . '</td>'; ?>
-                                    <td><a href="update.php?id=<?php echo $row['id']; ?>"><i class="bi bi-pencil text-info"></i></a></td>
+                                    <td><form method="POST" action="update.php"><input type="hidden" name="id" value="<?php echo $row['id']; ?>" ><button  class="bg-white border border-0" type="submit"><i class="bi bi-pencil text-info"></i></button></form></td>
                                     <td><a href="delete.php?id=<?php echo $row['id']; ?>"><i class="bi bi-trash text-info"></i></a> </td>
                                 </tr>
                                 <?php

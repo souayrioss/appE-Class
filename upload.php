@@ -1,6 +1,5 @@
 <?php 
                 require_once 'include.php';
-                $student = json_decode(file_get_contents('js/student.json'),true);
                 $file = $_FILES['file_up'];
                 move_uploaded_file($file['tmp_name'], "./test.csv");
                 $fh = fopen( "test.csv", "a+");

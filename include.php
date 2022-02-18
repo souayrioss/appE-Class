@@ -13,8 +13,8 @@
                 </div>
                 <div class="profil text-center mb-lg-4 mx-auto">
                     <img class=" rounded-circle mb-3" src="img/youcode.png" alt="admin">
-                    <h2>'.$_SESSION['username'].'</h2>
-                    <p class="rol text-info">Admin</p>
+                    <h2>'.$_SESSION['firstName']. " ".$_SESSION['lastName'].'</h2>
+                    <p class="rol text-info">'.$_SESSION['role'].'</p>
                 </div>
                 <ul class="navbar-nav d-flex flex-column mx-auto">
                     <li class="nav-item  rounded-3 px-lg-5 mb-2 ';
@@ -31,7 +31,7 @@
                     echo ' "><a class="nav-link text-black" href="payment.php" ><i class="bi bi-coin p-2"></i><span>Paiment</span></a></li>
                     <li class="nav-item rounded-3 px-lg-5 mb-2"><a class="nav-link text-black" href="#" ><i class="bi bi-clipboard-data p-2"></i><span>Report</span></a></li>
                     <li class="nav-item rounded-3 px-lg-5 mb-5"><a class="nav-link text-black" href="#" ><i class="bi bi-sliders p-2"></i><span>Setting</span></a></li>
-                    <li class="nav-item rounded-3 text-center mt-md-3 "><a class="nav-link text-black" href="index.php" ><span>Log out</span><i class="bi bi-box-arrow-right p-2"></i></a></li>
+                    <li class="nav-item rounded-3 text-center mt-md-3 "><a class="nav-link text-black" href="logout.php" ><span>Log out</span><i class="bi bi-box-arrow-right p-2"></i></a></li>
                 </ul>
             </nav>
         ';
@@ -62,25 +62,30 @@
     );
         
 
-    function check(){
-        $admin = array (
-            ['username' => 'H.Jabane', 'password' => 'azert'],
-            ['username' => 'Mr.Mourad', 'password' => 'azertii']
-        );
-        
-        if(!(count($_POST) === 0)){
-            foreach($admin as $row){
-                    $foundEm = in_array($_POST['username'], $row);
-                    $foundPs = in_array($_POST['password'], $row);
-                    if($foundEm && $foundPs){
-                        session_start();
-                        $_SESSION['username'] = $_POST['username'];
-                        header('Location: dashboard.php'); 
-                        break;
-                    }else {
-                        header('Location: index.php?error');
-                    }
+    function check($data){
+        $email= $data['email'];
+        $pass=$data['password'];
+        $req=" SELECT * FROM role r, user u where u.email ='$email' and u.password ='$pass' and r.id = u.id_role ";
+        global $cnx;
+        $res = $cnx -> query($req);
+        if( $res -> num_rows > 0 ){
+            $row = $res -> fetch_assoc();
+                session_start();
+                $_SESSION['firstName'] = $row['firstName'];
+                $_SESSION['lastName'] = $row['lastName'];
+                $_SESSION['id'] = $row['id'];
+                $_SESSION['role'] = $row['name'];
+
+                if(isset($_POST['check'])){
+                    setcookie('email', $row['email'], time() + 3600*24);
+                    setcookie('password',$row['password'], time() + 3600*24);
+                }else{
+                    setcookie('email');
+                    setcookie('password');
                 }
+                header('Location: dashboard.php'); 
+        }else {
+                header('Location: index.php?error');
         }
     }
     // Function for Json File
@@ -124,13 +129,12 @@
             $phone =$data['phone'];
             $enrollNumber = $data['enrollNumber'];
             $dateOfAdmission = $data['dateOfAdmission'];
-            $creat = date("Y-m-d");
+            $id_rol=3;
             
 
-        $req=" INSERT INTO student (image, firstname, lastname, email, phone, enrollNumber, dateOfAdmission, created_at )VALUES ('$imgName', '$fname', '$lname', '$email', '$phone', '$enrollNumber', '$dateOfAdmission' ,'$creat')";
+        $req=" INSERT INTO user (image, firstname, lastname, email, phone, enrollNumber, dateOfAdmission,id_role )VALUES ('$imgName', '$fname', '$lname', '$email', '$phone', '$enrollNumber', '$dateOfAdmission' ,'$id_rol')";
         global $cnx;
         $cnx -> query($req);
-        header('location: student.php');
 
 
             // $student = getStudents();
@@ -161,7 +165,6 @@
         $req=" INSERT INTO course (image, title, categorie, description, price, dateCourse )VALUES ('$imgName', '$title', '$categorie', '$description', '$price', '$date')";
         global $cnx;
         $cnx -> query($req);
-        header('location: course.php');
         
 
     }
@@ -175,8 +178,7 @@
             $phone =$data['phone'];
             $enrollNumber = $data['enrollNumber'];
             $dateOfAdmission = $data['dateOfAdmission'];
-            $update = date("Y-m-d");
-            $req = "UPDATE student SET firstName= '$fname', lastName = '$lname', email = '$email', phone = '$phone', enrollNumber = '$enrollNumber', dateOfAdmission ='$dateOfAdmission' ,updated_at ='$update' WHERE id = '$id' ";
+            $req = "UPDATE user SET firstName= '$fname', lastName = '$lname', email = '$email', phone = '$phone', enrollNumber = '$enrollNumber', dateOfAdmission ='$dateOfAdmission'  WHERE id = '$id' ";
             global $cnx;
             $cnx -> query($req);
         // $students = getStudents() ;

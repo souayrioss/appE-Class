@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php session_start(); 
+    if(empty($_SESSION)){
+        header('location: index.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,28 +42,30 @@
                                 <?php
                                     require_once 'include.php';
                                     if($_SERVER['REQUEST_METHOD']==='POST'){
+                                        if(!empty($_POST['title']) && !empty($_POST['categorie']) && !empty($_POST['description']) && !empty($_POST['price'])){
                                         addCrs($_POST);
                                         
+                                        }
                                     }
                                 ?>
                                 <form class="row g-3" method="post" enctype="multipart/form-data" >
                                     <div class="modal-body ">
                                         <div class="d-flex flex-column  align-items-center ">
                                             <label class="form-label text-muted ">Image</label>
-                                            <input type="file" class="form-control shadow-none w-75" name="image"> 
+                                            <input type="file" class="form-control shadow-none w-75" name="image" required> 
                                             <label class="form-label text-muted mt-2">Title</label>
-                                            <input type="text" class="form-control shadow-none w-75" name="title"> 
+                                            <input type="text" class="form-control shadow-none w-75" name="title" required> 
                                             <label class="form-label text-muted mt-2">Categorie</label>
-                                            <select class="form-label text-muted mb-0 w-75 py-2" name="categorie"> 
+                                            <select class="form-label text-muted mb-0 w-75 py-2" name="categorie" required> 
                                                 <option value=""></option>
                                                 <option value="front-end">Front-End</option>
                                                 <option value="back-end">Back-End</option>
                                                 <option value="dataBase">DataBase</option>
                                             </select>
                                             <label class="form-label text-muted mt-2">Description </label>
-                                            <input type="text" class="form-control shadow-none w-75" name="description" >
+                                            <input type="text" class="form-control shadow-none w-75" name="description" required>
                                             <label class="form-label text-muted mt-2">Price </label>
-                                            <input type="tel" class="form-control shadow-none w-75 " name="price" > 
+                                            <input type="tel" class="form-control shadow-none w-75 " name="price" required> 
                                         </div>
                                     </div>
                                     <div class="modal-footer">

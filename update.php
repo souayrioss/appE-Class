@@ -11,23 +11,28 @@
 </head>
 <body>
     <?php
-    require_once 'include.php';
-    $id=$_GET['id'];
-    $req = "SELECT * FROM student WHERE id = $id ";
-    $res = $cnx -> query($req);
-    if ($res -> num_rows > 0){
-        $student = $res -> fetch_assoc();
-    }
-    if($_SERVER['REQUEST_METHOD']==='POST'){
-        updateStd($_POST,$id);
-        header('location: student.php');
-    }
+    
+        require_once 'include.php';
+        $id=$_POST['id'];
+        $req = "SELECT * FROM user WHERE id = $id ";
+        $res = $cnx -> query($req);
+        if ($res -> num_rows > 0){
+            $student = $res -> fetch_assoc();
+        }
+        if(isset($_POST['save'])){
+            if($_SERVER['REQUEST_METHOD']==='POST'){
+                updateStd($_POST,$id);
+                header('location: student.php');
+            }
+        }
     ?>
     <main class="container d-flex justify-content-center align-items-center">
             <div class="login-form bg-white p-5 ">
                 <form class="row g-3" method="POST" >
                     <div class="modal-body ">
                         <div class="d-flex flex-column   ">
+
+                            <input type="hidden" class="form-control shadow-none" name="id" value="<?php echo $student['id'] ?>"> 
                             <label class="form-label text-muted ">First Name</label>
                             <input type="text" class="form-control shadow-none" name="firstName" value="<?php echo $student['firstName'] ?>"> 
                             <label class="form-label text-muted mt-1">Last Name</label>
@@ -41,7 +46,7 @@
                             <label for="name" class="form-label text-muted mt-1">date Of Admission</label>
                             <input type="date" class="form-control shadow-none " name="dateOfAdmission" value="<?php echo $student['dateOfAdmission'] ?>" > 
                         </div>
-                        <button type="submit" class="btn btn-info mt-3 px-5  text-white fw-bold " >Save</button>
+                        <input type="submit" class="btn btn-info mt-3 px-5  text-white fw-bold " value="Save" name="save">
                     </div>
                 </form>
             </div>

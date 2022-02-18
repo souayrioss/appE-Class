@@ -11,7 +11,7 @@
     margin-left: -18vw;
     top: 0;
     background-color:#f6fcb6;
-    transition: 1s;
+    transition: 0.5s;
     overflow-y: auto;
 }
 .logo h1{
@@ -39,7 +39,7 @@ a{
     top: 8px
 }
 .menu-btn{
-    transition: 1s;
+    transition: 0.5s;
 }
 .active-nav{
     margin-left: 0;
@@ -54,7 +54,7 @@ a{
     width: 100vw;
     height: 27vh;
     right: 0;
-    transition: all 1s;
+    transition:  0.5s;
 }
 .boxes img{
     height: 50px;
