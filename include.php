@@ -49,22 +49,35 @@
     </header>
         ';
     }
-    // $student = array (
-    //     ['oussama', 'souayrioss@gmail.com', '0612345678', '1234567890', '99-erth, 0000'],
-    //     ['Qossay', 'qossayria@gmail.com', '068765432', '0987654321', '00-pliton, 9999'],
-    //     ['zoubair', 'zoubairsou@gmail.com', '0656748930', '012938474', '66-ZOO, 2001']      
-    // );
-    $payment  = array (
-        ['name' => 'oussama', 'paymentSchedule' => 'First', 'billNumber' => '00011225', 'amountPaid' => '300', 'nalanceAmount' => '500', 'date' => '00/00/0000'],
-        ['name' => 'Qossay', 'paymentSchedule' => 'Last', 'billNumber' => '00044339', 'amountPaid' => '400', 'nalanceAmount' => '9999', 'date' => '01/01/0000'],
-        ['name' => 'zoubair', 'paymentSchedule' => 'First', 'billNumber' => '00099771', 'amountPaid' => '200', 'nalanceAmount' => '0000', 'date' => '02/02/0000'],
-        ['name' => 'Oways', 'paymentSchedule' => 'First', 'billNumber' => '00088571', 'amountPaid' => '2100', 'nalanceAmount' => '0001', 'date' => '07/09/9999'],
-    );
+    function addUser($data){
         
-
+            if ($data['codeRole'] == 'AZ45'){
+                $imgName = 'avatarPrf.png' ;
+                $id_rol=2;
+            }else{
+                $imgName = 'avatarStd.png' ;
+                $id_rol=3;
+            }
+            $fname = $data['firstName'];
+            $lname = $data['lastName'];
+            $email = $data['email'];
+            $password = md5($data['password']);
+            $phone =$data['phone'];
+            $enrollNumber = $data['enrollNumber'];
+            $dateOfAdmission = $data['dateOfAdmission'];
+            $sql=" SELECT * FROM user  where email ='$email'";
+            global $cnx;
+            $res = $cnx -> query($sql);
+            if( $res -> num_rows > 0 ){
+                header('Location: index.php');}else{
+            $req=" INSERT INTO user (image, firstname, lastname, email, password, phone, enrollNumber, dateOfAdmission,id_role )VALUES ('$imgName', '$fname', '$lname', '$email', '$password','$phone', '$enrollNumber', '$dateOfAdmission' ,'$id_rol')";
+            $cnx -> query($req);
+        }
+    }
     function check($data){
         $email= $data['email'];
-        $pass=$data['password'];
+        $pass= md5($data['password']);
+
         $req=" SELECT * FROM role r, user u where u.email ='$email' and u.password ='$pass' and r.id = u.id_role ";
         global $cnx;
         $res = $cnx -> query($req);
@@ -75,10 +88,9 @@
                 $_SESSION['lastName'] = $row['lastName'];
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['role'] = $row['name'];
-
                 if(isset($_POST['check'])){
-                    setcookie('email', $row['email'], time() + 3600*24);
-                    setcookie('password',$row['password'], time() + 3600*24);
+                    setcookie('email', $data['email'], time() + 3600*24);
+                    setcookie('password', $data['password'], time() + 3600*24);
                 }else{
                     setcookie('email');
                     setcookie('password');
@@ -88,15 +100,10 @@
                 header('Location: index.php?error');
         }
     }
-    // Function for Json File
     function getStudents()
     {
         return json_decode(file_get_contents('js/student.json'),true);
     }
-    // function putStudents()
-    // {
-    //     return file_put_contents('js/student.json',json_encode());
-    // }
     function getStudentById($id)
     {
         $students = getStudents() ;
@@ -118,6 +125,7 @@
             return $max;
             
     }
+    
     function addStd($data)
     {       
             $imgName =$_FILES['image']['name'];
@@ -135,21 +143,8 @@
         $req=" INSERT INTO user (image, firstname, lastname, email, phone, enrollNumber, dateOfAdmission,id_role )VALUES ('$imgName', '$fname', '$lname', '$email', '$phone', '$enrollNumber', '$dateOfAdmission' ,'$id_rol')";
         global $cnx;
         $cnx -> query($req);
+        setcookie("TestCookie", 'valueaaaaaaaaaaaaaaaa', time()+3600);
 
-
-            // $student = getStudents();
-            // $add_arr = array(
-            // 'id'   => maxId()+1,
-            // 'name' => $data['name'],
-            // 'email' => $data['email'],
-            // 'phone' => $data['phone'],
-            // 'enrollNumber' => $data['enrollNumber'],
-            // 'date' => $data['date']
-            // );
-            // $student[] = $add_arr;
-            
-            // $datas = json_encode($student, JSON_PRETTY_PRINT);
-            // file_put_contents('js/student.json', $datas);
     }
     function addCrs($data)
     {       
@@ -181,13 +176,6 @@
             $req = "UPDATE user SET firstName= '$fname', lastName = '$lname', email = '$email', phone = '$phone', enrollNumber = '$enrollNumber', dateOfAdmission ='$dateOfAdmission'  WHERE id = '$id' ";
             global $cnx;
             $cnx -> query($req);
-        // $students = getStudents() ;
-        // foreach($students as $key => $student){
-        //     if($student['id'] == $id ){
-        //         $students[$key] = array_merge($student,$data);
-        //     }
-        // } 
-        // file_put_contents('js/student.json',json_encode($students)); 
     }
     function deleteStd($id){
         $students = getStudents() ;

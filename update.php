@@ -30,9 +30,8 @@
             <div class="login-form bg-white p-5 ">
                 <form class="row g-3" method="POST" >
                     <div class="modal-body ">
-                        <div class="d-flex flex-column   ">
-
-                            <input type="hidden" class="form-control shadow-none" name="id" value="<?php echo $student['id'] ?>"> 
+                        <div class="d-flex flex-column ">
+                            <input type="text" class="form-control shadow-none" name="id" value="<?php echo $student['id'] ?>"> 
                             <label class="form-label text-muted ">First Name</label>
                             <input type="text" class="form-control shadow-none" name="firstName" value="<?php echo $student['firstName'] ?>"> 
                             <label class="form-label text-muted mt-1">Last Name</label>

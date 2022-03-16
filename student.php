@@ -1,4 +1,5 @@
 <?php session_start();
+$date = date("Y-m-d");
 if(empty($_SESSION)){
     header('location: index.php');
 }
@@ -33,7 +34,7 @@ if(empty($_SESSION)){
                     </div>
                     <!-- modal for add students -->
                     <div class="modal fade" id="staticBackdrop" >
-                        <div class="modal-dialog">
+                        <div class="modal-dialog ">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">ADD NEW STUDENT</h5>
@@ -65,7 +66,7 @@ if(empty($_SESSION)){
                                             <label class="form-label text-muted ">Enroll Number</label>
                                             <input type="tel" class="form-control shadow-none w-75" name="enrollNumber"  required>
                                             <label for="name" class="form-label text-muted">Date Of Admission</label>
-                                            <input type="date" class="form-control shadow-none w-75" name="dateOfAdmission"  required> 
+                                            <input type="date" class="form-control shadow-none w-75" name="dateOfAdmission" max="<?=$date; ?>"  required> 
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -127,10 +128,61 @@ if(empty($_SESSION)){
                                     <td>' . $row['phone'] . '</td>
                                     <td>' . $row['enrollNumber'] . '</td>
                                     <td>' . $row['dateOfAdmission'] . '</td>'; ?>
-                                    <td><form method="POST" action="update.php"><input type="hidden" name="id" value="<?php echo $row['id']; ?>" ><button  class="bg-white border border-0" type="submit"><i class="bi bi-pencil text-info"></i></button></form></td>
-                                    <td><a href="delete.php?id=<?php echo $row['id']; ?>"><i class="bi bi-trash text-info"></i></a> </td>
+                                    <td><form method="POST" action="update.php"><input type="hidden" name="id" value="<?php echo $row['id']; ?>" ><button  class="bg-white border border-0" type="submit"><i class="bi bi-pencil text-info"></i></button></form></td>                                    
+                                        <td><a  type="button" data-bs-toggle="modal" data-bs-target="#supprimeModal"> <i class="bi bi-trash text-info"></i></a> </td>
                                 </tr>
-                                <?php
+                                <!-- modal for edit students -->
+                                <div class="modal fade" id="editeModal" >
+                                    <div class="modal-dialog ">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">EDIT STUDENT</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form class="row g-3" method="post" enctype="multipart/form-data" >
+                                                <div class="modal-body ">
+                                                    <div class="d-flex flex-column  align-items-center ">
+                                                    <input type="hidden" class="form-control shadow-none w-75" name="image" value=""> 
+                                                        <label class="form-label text-muted ">Image</label>
+                                                        <input type="file" class="form-control shadow-none w-75" name="image" value=""> 
+                                                        <label class="form-label text-muted ">First Name</label>
+                                                        <input type="text" class="form-control shadow-none w-75" name="firstName" value=""> 
+                                                        <label class="form-label text-muted ">Last Name</label>
+                                                        <input type="text" class="form-control shadow-none w-75" name="lastName" value="">
+                                                        <label class="form-label text-muted ">Email</label>
+                                                        <input type="text" class="form-control shadow-none w-75" name="email" value="">
+                                                        <label class="form-label text-muted ">Password</label>
+                                                        <input type="text" class="form-control shadow-none w-75" name="password" value="">
+                                                        <label class="form-label text-muted ">Phone</label>
+                                                        <input type="tel" class="form-control shadow-none w-75 " name="phone" value=""> 
+                                                        <label class="form-label text-muted ">Enroll Number</label>
+                                                        <input type="tel" class="form-control shadow-none w-75" name="enrollNumber"  value="">
+                                                        <label for="name" class="form-label text-muted">Date Of Admission</label>
+                                                        <input type="date" class="form-control shadow-none w-75" name="dateOfAdmission" max="<?=$date; ?>"  value=""> 
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-info px-5 text-white fw-bold">Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                        <div class="modal fade  " id="supprimeModal" tabindex="-1" aria-labelledby="supprimeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog d-flex justify-content-center align-items-center h-75 w-25">
+                                <div class="modal-content">
+                                <div class="modal-body">
+                                <p class="text-center text-warning fs-1"><i class="bi bi-exclamation-octagon"></i></p>
+                                <h2 class='text-center'>Êtes-vous sûr ?</h2> 
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="delete.php?id=<?php echo $row['id']; ?>" type="button" class="btn btn-danger px-4 py-2 mx-3">Delete</a>
+                                    <button type="button" class="btn btn-secondary px-4 py-2" data-bs-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
                             }
                         }
                         ?>
@@ -138,18 +190,9 @@ if(empty($_SESSION)){
                     </table>
                 </div>
             </main>
-            
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script src="js/bootstrap.js" ></script>
-            <script>
-                var menu_btn = document.querySelector("#menu-btn")
-                var sidebar = document.querySelector("#sideBar")
-                var btn = document.querySelector(".menu-btn")
-                var boxes = document.querySelector(".boxes")
-                menu_btn.addEventListener("click",()=>{
-                    sidebar.classList.toggle("active-nav")
-                    btn.classList.toggle("active-cont")
-                    boxes.classList.toggle("active-boxes")
-                })
-            </script>
+            <script src="js/script.js">
+    </script>
 </body>
 </html>
