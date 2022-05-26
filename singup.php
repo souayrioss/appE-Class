@@ -1,7 +1,4 @@
-<?php  
-if(isset($_SESSION)){
-    header('location: dashborad.php');
-} ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,47 +21,52 @@ if(isset($_SESSION)){
                 <div class="login-title text-center mb-3">
                     <h2 class="text-uppercase">Sing up</h2>
                     <p class="text-muted ">Remplissez soigneusement le formulaire d'inscription</p>
+                    <?php
+                    if(isset($_COOKIE['addUser'])){
+                    echo '<div class="bg-info"><p>'. $_COOKIE['addUser'] .'</p></div>';
+                    }
+                ?>
                 </div>
-                <form class="row g-3" name="form" method="POST" >
+                <form class="row g-3" method="POST" >
                     <div class="col-md-6 ">
                         <label class="form-label text-muted">First Name</label>
                         <input type="text" class="form-control shadow-none " name="firstName" id="firstName" placeholder="Enter your First Name" >
-                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> First Name obligatoir</span></div>
+                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> First Name obligatoir valid </span></div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label text-muted">Last Name</label>
                         <input type="text" class="form-control shadow-none " name="lastName" id="lastName" placeholder="Enter your Last Name" >
-                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> Last Name obligatoir</span></div>
+                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> Last Name obligatoir valid</span></div>
                     </div>
                     <div class="col-md-12">
                         <label class="form-label text-muted">E-mail</label>
                         <input type="text" class="form-control shadow-none  " name="email" id="email" placeholder="Enter your UserName" > 
-                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> E-mail obligatoir</span></div>
+                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> E-mail obligatoir valid</span></div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label text-muted">Password</label>
                         <input type="password" class="form-control shadow-none" name="password" id="password" placeholder="Enter your password" >
-                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> Password obligatoir</span></div>
+                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> Password obligatoir valid</span></div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label text-muted">Confirm-Password</label>
                         <input type="password" class="form-control shadow-none" id="confirmPassword" placeholder="Enter your password" >
-                        <div id="message" class="message d-none "><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> Password deferent</span></div>
+                        <div id="message" class="message d-none "><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> Password deferent valid</span></div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label text-muted">Phone</label>
                         <input type="tel" class="form-control shadow-none" name="phone" id="phone" placeholder="Enter your Number Phone" >
-                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> Phone Number obligatoir</span></div>
+                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> Phone Number obligatoir valid</span></div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label text-muted">Enroll Number</label>
                         <input type="text" class="form-control shadow-none " name="enrollNumber" id="enrollNumber" placeholder="Enter your Enroll Number " >
-                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> Enroll Number obligatoir</span></div>
+                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> Enroll Number obligatoir valid</span></div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label text-muted"> Date Of Admission </label>
                         <input type="date" class="form-control shadow-none " name="dateOfAdmission" id="dateOfAdmission" > 
-                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> Date Admission obligatoir</span></div>
+                        <div id="message" class="d-none"><span class="text-danger mx-3 "><i class="bi bi-exclamation-circle-fill "></i> Date Admission obligatoir valid</span></div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label text-muted">Code Role</label>

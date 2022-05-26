@@ -1,7 +1,9 @@
 <?php  
 if(isset($_SESSION)){
     header('location: dashborad.php');
-} ?>
+} 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +28,7 @@ if(isset($_SESSION)){
                     <p class="text-muted">Enter your credentials to access your account</p>
                 </div>
                 <?php 
+                
                     if (isset($_GET['error'])){
                         echo '<p class="err"> Email Or Password Incorrect </p>';
                     }

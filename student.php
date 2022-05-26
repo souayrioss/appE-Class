@@ -129,7 +129,7 @@ if(empty($_SESSION)){
                                     <td>' . $row['enrollNumber'] . '</td>
                                     <td>' . $row['dateOfAdmission'] . '</td>'; ?>
                                     <td><form method="POST" action="update.php"><input type="hidden" name="id" value="<?php echo $row['id']; ?>" ><button  class="bg-white border border-0" type="submit"><i class="bi bi-pencil text-info"></i></button></form></td>                                    
-                                        <td><a  type="button" data-bs-toggle="modal" data-bs-target="#supprimeModal"> <i class="bi bi-trash text-info"></i></a> </td>
+                                    <td><a  type="button" data-bs-toggle="modal" data-bs-target="#supprimeModal"> <i class="bi bi-trash text-info"></i></a> </td>
                                 </tr>
                                 <!-- modal for edit students -->
                                 <div class="modal fade" id="editeModal" >
