@@ -69,23 +69,7 @@
             $phone =$data['phone'];
             $enrollNumber = $data['enrollNumber'];
             $dateOfAdmission = $data['dateOfAdmission'];
-            // $mail = new PHPMailer(true);
-            // try{
-            //     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-            //     $mail->isSMTP();
-            //     $mail->Host = 'smtp.gmail.com';
-            //     $mail->STMPAuth = true ;
-            //     $mail->Username='souayri.oussama@gmail.com';
-            //     $mail->Password = 'souayri@2001';
-            //     $mail->SMTPSecure= PHPMailer::ENCRYPTION_STARTTLS;
-            //     $mail->Port = 587 ;
-            //     $mail->setFrom('souayri.oussama@gmail.com','appE-Class.com');
-            //     $mail->addAddress($email,$fname." ".$lname);
-            //     $mail->isHTML(true);
-            //     $verificationCode = substr(number_format(time()* rand(),0,'',''),0,6);
-            //     $mail->Subject = 'Email verivication';
-            //     $mail->Body='<p>Your verification code is : <b style="font-size:30px;">'. $verificationCode .'</b></p>';
-            //     $mail->send();
+            
             $sql=" SELECT * FROM user  where email ='$email'";
             global $cnx;
             $res = $cnx -> query($sql);
